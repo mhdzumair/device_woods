@@ -9,7 +9,7 @@ on post-fs
 #   insmod /vendor/lib/modules/mtk_fm_priv.ko
 #   insmod /vendor/lib/modules/mtk_wmt_wifi.ko
 
-    insmod /vendor/lib/modules/mtk_wmt_detect.ko
+    #insmod /vendor/lib/modules/mtk_wmt_detect.ko
     #restore necessary files into data partition
     mkdir /data/thh 0770 root root
     mkdir /data/thh/tee_00 0770 root root
