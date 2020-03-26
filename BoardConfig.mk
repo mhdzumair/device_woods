@@ -62,6 +62,9 @@ include vendor/mad/config/symbols.mk
 #audio
 TARGET_HAS_PRE_N_AUDIO := true
 
+# Use custom init.rc
+TARGET_PROVIDES_INIT_RC := true
+
 # Display
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
