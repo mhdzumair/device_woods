@@ -20,6 +20,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.mt6737m
 
+# MTK stuff
+BOARD_USES_MTK_HARDWARE := true
+
 # Disable adb security
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.mount.fs=EXT4 \
