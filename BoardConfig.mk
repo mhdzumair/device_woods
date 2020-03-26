@@ -27,7 +27,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_RAMDISK_OFFSET := 0x04000000
 BOARD_TAGS_OFFSET := 0x0e000000
-BOARD_KERNEL_CMDLINE := console=tty0 console=ttyMT0,921600n1 root=/dev/ram vmalloc=496M androidboot.hardware=mt6735 slub_max_order=0 slub_debug=O androidboot.radio=EMEA androidboot.dualsim=true bootopt=64S3,32N2,32N2 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,32N2 androidboot.selinux=permissive androidboot.selinux=disabled
 BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_TAGS_OFFSET)
 TARGET_KERNEL_ARCH := arm
 TARGET_KERNEL_ARCH_MTK_PLATFORM=mt6735
@@ -71,7 +71,6 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 # LightHAL
 TARGET_PROVIDES_LIBLIGHT := true
 
-#TODO
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
@@ -88,13 +87,11 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_DEFAULT_EXTERNAL_STORAGE := true
 endif
 
-#TODO
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote32
 
-#TODO
 # SELinux
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
-#TODO
 # Seccomp filter
 BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
