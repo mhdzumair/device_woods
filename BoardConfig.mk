@@ -99,3 +99,6 @@ BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
 # Seccomp filter
 BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
+
+#includ header patch
+TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
