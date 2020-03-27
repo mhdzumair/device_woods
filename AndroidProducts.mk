@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_woods.mk
+    $(LOCAL_DIR)/omni_woods.mk

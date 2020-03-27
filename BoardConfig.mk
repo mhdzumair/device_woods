@@ -1,8 +1,6 @@
 # mt6737m platform boardconfig
 LOCAL_PATH := device/motorola/woods
 
-include vendor/mad/config/board.mk
-
 # Platform
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_BOARD_PLATFORM := mt6737m
@@ -21,7 +19,6 @@ TARGET_BOOTLOADER_BOARD_NAME := mt6737m
 
 # Kernel
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
-TARGET_KERNEL_SOURCE := kernel/motorola/woods
 BOARD_KERNEL_BASE := 0x40000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_OFFSET := 0x00008000
@@ -30,14 +27,12 @@ BOARD_TAGS_OFFSET := 0x0e000000
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,32N2 androidboot.selinux=permissive androidboot.selinux=disabled
 BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_TAGS_OFFSET)
 TARGET_KERNEL_ARCH := arm
-TARGET_KERNEL_ARCH_MTK_PLATFORM=mt6735
-TARGET_KERNEL_CONFIG := woods_defconfig
 MTK_APPENDED_DTB_SUPPORT := yes
 TARGET_KMODULES := true
 
-#toolchain
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/gcc-linaro-7.5/bin
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/zImage-dtb
+PRODUCT_COPY_FILES += \
+    $(TARGET_PREBUILT_KERNEL):kernel
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -52,16 +47,6 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
-# Include needed symbols
-TARGET_INCLUDE_XLOG_SYMBOLS := true
-TARGET_INCLUDE_AUDIO_SYMBOLS := true
-TARGET_INCLUDE_GPS_SYMBOLS := true
-TARGET_INCLUDE_UI_SYMBOLS := true
-include vendor/mad/config/symbols.mk
-
-#audio
-TARGET_HAS_PRE_N_AUDIO := true
-
 # Use custom init.rc
 TARGET_PROVIDES_INIT_RC := true
 
@@ -69,15 +54,41 @@ TARGET_PROVIDES_INIT_RC := true
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
-
-# LightHAL
-TARGET_PROVIDES_LIBLIGHT := true
 
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
+
+# Recovery
+RECOVERY_VARIANT := twrp
+
+# TWRP
+ifeq ($(RECOVERY_VARIANT), twrp)
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
+TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness\"
+TW_NO_REBOOT_BOOTLOADER := true
+TW_THEME := portrait_hdpi
+TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
+TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_MAX_BRIGHTNESS := 255
+BOARD_SUPPRESS_SECURE_ERASE := true
+TW_INCLUDE_CRYPTO := true
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_MAX_BRIGHTNESS := 255
+TW_NO_USB_STORAGE := true
+BOARD_USE_FRAMEBUFFER_ALPHA_CHANNEL := true
+TARGET_DISABLE_TRIPLE_BUFFERING := false
+TW_USE_TOOLBOX := true
+else
+# CWM
+BOARD_RECOVERY_SWIPE := true
+BOARD_SUPPRESS_EMMC_WIPE := true
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
+endif
+
 # TWRP-specific
 ifeq ($(RECOVERY_VARIANT), twrp)
 DEVICE_RESOLUTION := 720x1280
@@ -91,14 +102,15 @@ TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_DEFAULT_EXTERNAL_STORAGE := true
 endif
 
+TWRP_INCLUDE_LOGCAT := true
+TW_EXTRA_LANGUAGES := true
+
+# exFAT FS Support
+TW_INCLUDE_FUSE_EXFAT := true
+
+# NTFS Support
+TW_INCLUDE_FUSE_NTFS := true
+
+
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote32
-
-# SELinux
-BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
-
-# Seccomp filter
-BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
-
-#includ header patch
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
