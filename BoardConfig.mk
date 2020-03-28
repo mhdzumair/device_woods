@@ -102,3 +102,6 @@ BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
 
 #includ header patch
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+
+# Add ril stuff
+BOARD_RIL_CLASS := $(LOCAL_PATH)/ril
