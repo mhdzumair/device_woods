@@ -4,7 +4,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/dot/config/common.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/motorola/woods/device.mk)
@@ -19,7 +19,7 @@ TARGET_BOOTANIMATION_NAME := 720
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := woods
-PRODUCT_NAME := lineage_woods
+PRODUCT_NAME := dot_woods
 PRODUCT_BRAND := Motorola
 PRODUCT_MODEL := Moto E4
 PRODUCT_MANUFACTURER := Motorola
