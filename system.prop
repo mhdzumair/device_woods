@@ -5,6 +5,9 @@ ro.hardware=mt6735
 ro.board.platform=mt6737m
 service.adb.root=1
 persist.sys.root_access=0
+persist.service.adb.enable=1
+persist.service.debuggable=1
+persist.sys.usb.config=mtp,adb
 
 # Wifi
 ro.mediatek.wlan.wsc=1
