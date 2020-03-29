@@ -4,3 +4,28 @@
 # camera
 /dev/camera-pipemgr                                             u:object_r:camera_device:s0
 /dev/camera-sysram                                              u:object_r:camera_device:s0
+
+#tee
+/dev/tee1 u:object_r:tee_part_device:s0
+/dev/tee2 u:object_r:tee_part_device:s0
+/dev/block/platform/mtk-msdc\.0/[0-9]+\.msdc0/by-name/tee1		u:object_r:tee_block_device:s0
+/dev/block/platform/mtk-msdc\.0/[0-9]+\.msdc0/by-name/tee2		u:object_r:tee_block_device:s0
+
+/dev/trusty-ipc-dev0 u:object_r:tee_device:s0
+/data/thh(/.*)? u:object_r:teei_data_file:s0
+/data/misc/thh(/.*)? u:object_r:teei_thh_data_file:s0
+/data/misc/aee_interim(/.*)? u:object_r:coredump_file:s0
+/dev/teei_config u:object_r:teei_config_device:s0
+/dev/teei_client u:object_r:teei_client_device:s0
+/dev/tz_vfs u:object_r:teei_vfs_device:s0
+/dev/emmcrpmb0 u:object_r:teei_rpmb_device:s0
+/dev/teei_fp u:object_r:teei_fp_device:s0
+/dev/ut_keymaster u:object_r:ut_keymaster_device:s0
+/dev/dri/card0 u:object_r:dri_device:s0
+
+#teei_daemon
+/(system\/vendor|vendor)/bin/teei_daemon u:object_r:teei_daemon_exec:s0
+
+#tmpfs
+/data/data_tmpfs_log(/.*)? u:object_r:data_tmpfs_log_file:s0
+/data/tmp_mnt/data_tmpfs_log(/.*)? u:object_r:data_tmpfs_log_file:s0
