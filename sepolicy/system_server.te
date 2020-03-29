@@ -1,0 +1,2 @@
+#Added for policy for system_server Mohamed Zumair
+allow system_server debugfs:dir { read open };

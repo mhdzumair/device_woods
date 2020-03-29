@@ -1,0 +1,2 @@
+#Added for policy for system_server Mohamed Zumair
+allow etsd teei_fp_device:chr_file { read write open };

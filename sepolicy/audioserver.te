@@ -1,3 +1,5 @@
 #Added policy for audioserver by Mohamed Zumair
 allow audioserver device:chr_file { ioctl };
 allow audioserver init:unix_stream_socket { connectto };
+allow audioserver sysfs_boot_mode:file { read open };
+allow audioserver property_socket:sock_file { write };
