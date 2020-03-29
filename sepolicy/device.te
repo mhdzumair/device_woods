@@ -7,5 +7,13 @@ type teei_vfs_device, dev_type;
 type teei_rpmb_device, dev_type;
 type ut_keymaster_device, dev_type;
 type tee_part_device, dev_type;
+type tee_block_device, dev_type;
 
 type qemu_pipe_device, dev_type;
+
+# Operation : Migration
+# Purpose : Add permission for gpu access
+type dri_device, dev_type, mlstrustedobject;
+type hotknot_device, dev_type;
+type irrx_device, dev_type;
+
