@@ -5,7 +5,6 @@ allow init init:netlink_socket { create setopt bind getattr write read };
 allow init system_file:file { execute_no_trans };
 allow init graphics_device:chr_file { write ioctl };
 allow init block_device:blk_file { write };
-allow init system_file:file { execute_no_trans };
 allow init system_data_file:sock_file { write };
 allow init storage_file:lnk_file { read };
 allow init devpts:chr_file { setattr };

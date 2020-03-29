@@ -1,4 +1,3 @@
 #Added policy for audioserver by Mohamed Zumair
-allow audioserver device:chr_file { read write open ioctl };
-allow audioserver debugfs:file { write open };
+allow audioserver device:chr_file { ioctl };
 allow audioserver init:unix_stream_socket { connectto };
