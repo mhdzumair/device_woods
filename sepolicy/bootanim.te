@@ -1,2 +1,2 @@
 #Added policy for bootanim by Mohamed Zumair
-allow bootanim device:chr_file { read write open getattr ioctl };
+allow bootanim device:chr_file { getattr ioctl };
