@@ -1,0 +1,3 @@
+#Added policy for cameraserver by Mohamed Zumair
+allow cameraserver debugfs:file { write open };
+allow cameraserver device:chr_file { read write open ioctl };

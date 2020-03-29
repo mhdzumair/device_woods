@@ -1,0 +1,2 @@
+#allow policy for debuggerd by Mohamed Zumair
+allow debuggerd init:process { ptrace };

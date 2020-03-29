@@ -1,0 +1,2 @@
+#Added policy for netd by Mohamed Zumair
+allow netd kernel:system { module_request };

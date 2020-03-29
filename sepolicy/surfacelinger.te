@@ -1,0 +1,5 @@
+#Add policy for surfaceflinger by Mohamed Zumair
+
+allow surfaceflinger debugfs:file { write open };
+allow surfaceflinger device:chr_file { read write ioctl };
+allow surfaceflinger default_android_service:service_manager { add };
