@@ -1,2 +1,11 @@
 # adbd config file
 type adbd_data_file, file_type, data_file_type;
+
+# AEE exp
+type aee_exp_data_file, file_type, data_file_type;
+type aee_dumpsys_data_file, file_type, data_file_type;
+
+# SF rtt dump
+type sf_rtt_file, file_type, data_file_type;
+
+type proc_ged, fs_type;
