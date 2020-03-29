@@ -1,2 +1,2 @@
 #Added for policy for system_server Mohamed Zumair
-allow fsck block_device:blk_file { read open write ioctl };
+allow fsck block_device:blk_file { ioctl };

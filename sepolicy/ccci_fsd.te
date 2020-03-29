@@ -1,2 +1,2 @@
 #Added for policy for system_server Mohamed Zumair
-allow ccci_fsd device:chr_file { read open ioctl };
+allow ccci_fsd device:chr_file { ioctl };
