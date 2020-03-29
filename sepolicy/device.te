@@ -6,5 +6,6 @@ type teei_config_device, dev_type;
 type teei_vfs_device, dev_type;
 type teei_rpmb_device, dev_type;
 type ut_keymaster_device, dev_type;
+type tee_part_device, dev_type;
 
 type qemu_pipe_device, dev_type;
