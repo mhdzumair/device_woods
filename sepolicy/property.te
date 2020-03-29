@@ -1,2 +1,2 @@
 #=============allow teei deamon and init_thh daemon to set property ==============
-type soter_teei_prop, property_type, mtk_core_property_type;
+type soter_teei_prop, property_type, mtk_property_type;
