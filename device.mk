@@ -20,6 +20,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.mt6737m
 
+# ril_shim
+PRODUCT_PACKAGES += \
+		ril_shim
+
 # MTK stuff
 BOARD_USES_MTK_HARDWARE := true
 
