@@ -18,6 +18,18 @@ type hotknot_device, dev_type;
 type irrx_device, dev_type;
 
 type aal_als_device, dev_type;
-type logo_block_device, dev_type;
 type logo_device, dev_type;
-type para_block_device, dev_type;
+type mmcblk0_block_device, dev_type;
+type md32_device, dev_type;
+type scp_device, dev_type;
+type ttyACM_device, dev_type;
+type eemcs_device, dev_type;
+type misc_device, dev_type;
+type wmtdetect_device, dev_type;
+type stpwmt_device, dev_type;
+type ccci_device, dev_type;
+type wod_sim_socket, file_type;
+type wod_action_socket, file_type;
+
+# Fingerprint device
+type esfp0_device, dev_type, mlstrustedobject;
