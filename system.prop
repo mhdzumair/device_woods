@@ -4,7 +4,6 @@
 ro.hardware=mt6735
 ro.board.platform=mt6737m
 service.adb.root=1
-persist.sys.root_access=0
 persist.service.adb.enable=1
 persist.service.debuggable=1
 persist.sys.usb.config=mtp,adb
@@ -45,7 +44,6 @@ ro.zygote.preload.enable=0
 
 persist.sys.strictmode.visual=0
 persist.sys.strictmode.disable=1
-ro.boot.selinux=disable
 
 # Disable dirty region for Mali
 debug.hwui.render_dirty_regions=false
@@ -101,7 +99,7 @@ ro.nxpnfc.feature=1
 mdc_initial_max_retry=10
 
 # Telephony
-rild.libpath=mtk-ril.so
+rild.libpath=vendor/lib/mtk-ril.so
 rild.libargs=-d /dev/ttyC0
 ro.telephony.ril_class=MT6735
 ro.telephony.ril.config=fakeiccid
@@ -149,3 +147,4 @@ persist.mtk.volte.enable=1
 persist.mtk_vilte_support=1
 ro.mtk_vilte_ut_support=0
 persist.mtk_ussi_support=1
+ro.mtk_volte_support =1
