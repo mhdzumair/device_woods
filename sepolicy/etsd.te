@@ -1,2 +1,24 @@
 #Added for policy for system_server Mohamed Zumair
-allow etsd teei_fp_device:chr_file { read write open };
+binder_call(etsd, system_server);
+binder_call(etsd, fingerprintd);
+allow etsd etsd_data_file:chr_file { getattr read write ioctl open };
+type_transition etsd system_data_file:{ dir file } etsd_data_file;
+allow etsd etsd_data_file:dir create_dir_perms;
+allow etsd etsd_data_file:dir relabelfrom;
+allow etsd etsd_data_file:file create_file_perms;
+allow etsd etsd_data_file:file relabelfrom;
+allow etsd teei_fp_device:chr_file { read write open ioctl };
+
+# For permissions checking
+binder_call(etsd, system_server);
+allow etsd permission_service:service_manager find;
+allow etsd untrusted_app:binder {call transfer};
+allow etsd platform_app:binder { call transfer };
+
+allow etsd sysfs:file rw_file_perms;
+allow etsd storage_file:dir create_dir_perms;
+allow etsd storage_file:lnk_file create_file_perms;
+allow etsd mnt_user_file:dir create_dir_perms;
+allow etsd mnt_user_file:lnk_file create_file_perms;
+allow etsd fuse:dir create_dir_perms;
+allow etsd fuse:file create_file_perms;

@@ -1,2 +1,27 @@
 #Added for policy for system_server Mohamed Zumair
-allow ccci_fsd device:chr_file { ioctl };
+wakelock_use(ccci_fsd)
+
+#============= ccci_fsd MD NVRAM==============
+allow ccci_fsd nvram_data_file:dir create_dir_perms;
+allow ccci_fsd nvram_data_file:file create_file_perms;
+allow ccci_fsd nvram_data_file:lnk_file read;
+allow ccci_fsd nvram_device:chr_file rw_file_perms;
+#============= ccci_fsd MD3 related==============
+allow ccci_fsd c2k_file:dir create_dir_perms;
+allow ccci_fsd c2k_file:file create_file_perms;
+
+allow ccci_fsd otp_device:chr_file rw_file_perms;
+#============= ccci_fsd MD block data==============
+allow ccci_fsd block_device:dir search;
+allow ccci_fsd nvram_device:blk_file rw_file_perms;
+allow ccci_fsd mmcblk0_block_device:blk_file rw_file_perms;
+allow ccci_fsd nvdata_device:blk_file rw_file_perms;
+#============= ccci_fsd cryption related ==============
+allow ccci_fsd rawfs:dir create_dir_perms;
+allow ccci_fsd rawfs:file create_file_perms;
+
+# Purpose: for fstab parser
+allow ccci_fsd kmsg_device:chr_file w_file_perms;
+allow ccci_fsd proc_lk_env:file rw_file_perms;
+
+allow ccci_fsd device:chr_file { ioctl open read };

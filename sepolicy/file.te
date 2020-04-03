@@ -17,3 +17,8 @@ type teei_thh_data_file, file_type, data_file_type;
 # data_tmpfs_log
 type data_tmpfs_log_file, file_type, data_file_type;
 
+#mobilelog data/misc/mblog
+type logmisc_data_file, file_type, data_file_type;
+
+#mobilelog data/log_temp
+type logtemp_data_file, file_type, data_file_type;
