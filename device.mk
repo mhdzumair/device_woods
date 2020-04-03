@@ -24,7 +24,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 		ril_shim
 
-LINKER_FORCED_SHIM_LIBS := $(LINKER_FORCED_SHIM_LIBS):/system/lib/ril_shim.so|ril_shim.so:/system/lib64/ril_shim.so|ril_shim.so
+LINKER_FORCED_SHIM_LIBS := $(LINKER_FORCED_SHIM_LIBS):/system/vendor/bin/mtkrild|ril_shim.so
 
 # MTK stuff
 BOARD_USES_MTK_HARDWARE := true
