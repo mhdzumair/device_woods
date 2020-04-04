@@ -1,2 +1,9 @@
 #=============allow teei daemon and init_thh daemon to set property  ==============
 soter.teei.   u:object_r:soter_teei_prop:s0
+#=============allow pppd ==============
+ctl.pppd_gprs   u:object_r:pppd_gprs_prop:s0
+
+persist.mtk.main.attach u:object_r:persist_mtk_main_attach:s0
+#=============allow wifi offload deamon  ==============
+net.wo.   u:object_r:mtk_wod_prop:s0
+persist.net.wo.   u:object_r:persist_wod_prop:s0

@@ -25,11 +25,11 @@ type scp_device, dev_type;
 type ttyACM_device, dev_type;
 type eemcs_device, dev_type;
 type misc_device, dev_type;
-type wmtdetect_device, dev_type;
-type stpwmt_device, dev_type;
-type ccci_device, dev_type;
+#type stpwmt_device, dev_type;
+#type ccci_device, dev_type;
 type wod_sim_socket, file_type;
 type wod_action_socket, file_type;
 
-# Fingerprint device
-type esfp0_device, dev_type, mlstrustedobject;
+type otp_device, dev_type;
+
+type MTK_SMI_device, dev_type;

@@ -15,3 +15,20 @@ type volte_prop, property_type, mtk_property_type;
 
 #=============allow volte_rcs_proxy ==============
 type ril_volte_stack_rcsuaproxy_prop, property_type, mtk_property_type;
+
+type ftrace_log_prop, property_type, mtk_property_type;
+
+#=============allow mtkrild to set persist.ril property==============
+type persist_ril_prop, property_type, mtk_property_type;
+#=============allow ccci_mdinit to set ril_active_md_prop==============
+type ril_active_md_prop, property_type, mtk_property_type;
+type ril_cdma_report_prop, property_type, mtk_property_type;
+type persist_service_atci_prop, property_type, mtk_property_type;
+
+#=============allow mtkril set ims property================
+type persist_mtk_main_attach, property_type;
+#=============allow pppd ==============
+type pppd_gprs_prop, property_type, mtk_property_type;
+
+type mtk_wod_prop, property_type, mtk_property_type;
+type persist_wod_prop, property_type, mtk_property_type;

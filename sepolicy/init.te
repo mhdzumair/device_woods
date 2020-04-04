@@ -17,8 +17,7 @@ allow init logmisc_data_file:file { append };
 allow init sdcardfs:dir { search write add_name remove_name read open };
 allow init sdcardfs:file { create read append open getattr unlink };
 allow init mnt_user_file:lnk_file { read };
-allow init mnt_user_file:lnk_file
-allow init media_rw_data_file:file{ append };
+allow init media_rw_data_file:file { append };
 allow init stpwmt_device:chr_file { write };
 allow init teei_client_device:chr_file { write ioctl };
 allow init teei_data_file:file { append };

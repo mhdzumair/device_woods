@@ -30,43 +30,71 @@
 /data/data_tmpfs_log(/.*)? u:object_r:data_tmpfs_log_file:s0
 /data/tmp_mnt/data_tmpfs_log(/.*)? u:object_r:data_tmpfs_log_file:s0
 
-#block device
-/dev/block/dm-[0-9]+	u:object_r:dm_device:s0
-/dev/block/loop[0-9]*	u:object_r:loop_device:s0
-/dev/block/vold/.+	u:object_r:vold_device:s0
-/dev/bus/usb(.*)?	u:object_r:usb_device:s0
-/dev/cpuctl(/.*)?	u:object_r:cpuctl_device:s0
-/dev/input(/.*)	u:object_r:input_device:s0
-/dev/rtc[0-9]	u:object_r:rtc_device:s0
-/dev/snd(/.*)?	u:object_r:audio_device:s0
-/dev/tty[0-9]*	u:object_r:tty_device:s0
-/dev/ttyS[0-9]*	u:object_r:serial_device:s0
-
-#fscklogs
-/dev/fscklogs(/.*)?	u:object_r:fscklogs:s0
-/dev/graphics(/.*)?	u:object_r:graphics_device:s0
-
 #socket
-/dev/socket(/.*)?	u:object_r:socket_device:s0
-/dev/socket/sap_uim_socket[0-9]	u:object_r:sap_uim_socket:s0
-/dev/socket/wpa_eth[0-9]	u:object_r:wpa_socket:s0
-/dev/socket/wpa_wlan[0-9]	u:object_r:wpa_socket:s0
 /dev/socket/volte_imsa1(/.*)?	u:object_r:volte_imsa1_socket:s0
 /dev/socket/volte_stack(/.*)?	u:object_r:volte_stack_socket:s0
 
-#Files
-/system(/.*)?	u:object_r:system_file:s0
-/system/bin/install-recovery.sh	u:object_r:install_recovery_exec:s0
-/vendor(/.*)?	u:object_r:system_file:s0
-/oem(/.*)?	u:object_r:oemfs:s0
-/data(/.*)?	u:object_r:system_data_file:s0
-/data/backup(/.*)?	u:object_r:backup_data_file:s0
-/data/security(/.*)?	u:object_r:security_file:s0
-/data/drm(/.*)?	u:object_r:drm_data_file:s0
-/data/resource-cache(/.*)?	u:object_r:resourcecache_data_file:s0
-/data/ota(/.*)?	u:object_r:ota_data_file:s0
-/data/ota_package(/.*)?	u:object_r:ota_package_file:s0
-/data/adb(/.*)?	u:object_r:adb_data_file:s0
-/data/anr(/.*)?	u:object_r:anr_data_file:s0
-/data/media(/.*)?	u:object_r:media_rw_data_file:s0
-/data/mediadrm(/.*)?	u:object_r:media_data_file:s0
+/dev/emd.* u:object_r:emd_device:s0
+/data/misc/stp_dump(/.*)? u:object_r:stp_dump_data_file:s0
+/(system\/vendor|vendor)/bin/starter u:object_r:starter_exec:s0
+/dev/socket/wod_dns(/.*)? u:object_r:wod_dns_socket:s0
+/data/ipsec/wo(/.*)? u:object_r:wod_apn_conf_file:s0
+/data/ipsec(/.*)? u:object_r:wod_ipsec_conf_file:s0
+/dev/socket/wod_ipsec(/.*)? u:object_r:wod_ipsec_socket:s0
+/dev/socket/rild-oem(/.*)? u:object_r:rild_oem_socket:s0
+/sys/kernel/debug/ged(/.*)? u:object_r:debugfs_ged:s0
+
+#data files
+/data/aee_exp(/.*)?  u:object_r:aee_exp_data_file:s0
+/data/dumpsys(/.*)?    u:object_r:aee_dumpsys_data_file:s0
+/data/anr/SF_RTT(/.*)? u:object_r:sf_rtt_file:s0
+/data/log_temp(/.*)? u:object_r:logtemp_data_file:s0
+/data/nvram(/.*)? u:object_r:nvram_data_file:s0
+/data/misc/radvd(/.*)? u:object_r:radvd_data_file:s0
+/data/misc/setkey(/.*)?      u:object_r:ims_ipsec_data_file:s0
+/data/misc/setkey/setkey.conf        u:object_r:ims_ipsec_data_file:s0
+/data/misc/setkey/setkey_bak.conf    u:object_r:ims_ipsec_data_file:s0
+/data/misc/setkey/setkey_latest.conf u:object_r:ims_ipsec_data_file:s0
+
+#sysfs
+/sys/devices/virtual/misc/md32(/.*)?  u:object_r:sysfs_md32:s0
+/sys/devices/virtual/misc/scp(/.*)?  u:object_r:sysfs_scp:s0
+
+#socket
+/dev/socket/volte_imsm(/.*)? u:object_r:rild_imsm_socket:s0
+/dev/socket/volte_imsvt1(/.*)? u:object_r:volte_imsvt1_socket:s0
+/dev/socket/volte_imcb(/.*)? u:object_r:volte_imcb_socket:s0
+/dev/socket/volte_ua(/.*)? u:object_r:volte_ua_socket:s0
+/dev/socket/rild-ims(/.*)? u:object_r:rild_ims_socket:s0
+/dev/socket/volte_imsm_dongle(/.*)? u:object_r:rild_imsm_socket:s0
+/dev/socket/volte_vt(/.*)? u:object_r:volte_vt_socket:s0
+/dev/socket/rilproxy-mal(/.*)? u:object_r:rild_mal_socket:s0
+/dev/socket/rild-mal(/.*)? u:object_r:rild_mal_socket:s0
+/dev/socket/rild-mal-at(/.*)? u:object_r:rild_mal_at_socket:s0
+/dev/socket/rild-mal-md2(/.*)? u:object_r:rild_mal_md2_socket:s0
+/dev/socket/rild-mal-at-md2(/.*)? u:object_r:rild_mal_at_md2_socket:s0
+/dev/socket/mal-mfi(/.*)? u:object_r:mal_mfi_socket:s0
+/dev/socket/mal-mfi-dongle(/.*)? u:object_r:mal_mfi_socket:s0
+/dev/socket/wod_sim(/.*)? u:object_r:wod_sim_socket:s0
+/dev/socket/wod_action(/.*)? u:object_r:wod_action_socket:s0
+
+#device
+/dev/esfp0(/.*)? u:object_r:esfp0_device:s0
+/dev/esfp0       u:object_r:etsd_data_file:s0
+/dev/qemu_pipe(/.*)? u:object_r:qemu_pipe_device:s0
+/dev/hotknot(/.*)? u:object_r:hotknot_device:s0
+/dev/ir-learning u:object_r:irrx_device:s0
+/dev/aal_als(/.*)? u:object_r:aal_als_device:s0
+/dev/logo(/.*)? u:object_r:logo_device:s0
+/dev/md32(/.*)? u:object_r:md32_device:s0
+/dev/scp(/.*)? u:object_r:scp_device:s0
+/dev/ttyACM0        u:object_r:ttyACM_device:s0
+/dev/eemcs.* u:object_r:eemcs_device:s0
+/dev/misc(/.*)? u:object_r:misc_device:s0
+/dev/wmtdetect(/.*)? u:object_r:wmtdetect_device:s0
+
+# Custom files
+/custom(/.*)?		u:object_r:custom_file:s0
+
+#block
+/dev/block/mmcblk0 u:object_r:mmcblk0_block_device:s0

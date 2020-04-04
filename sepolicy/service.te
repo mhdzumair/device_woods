@@ -1,6 +1,3 @@
 type aal_service, service_manager_type;
 type terservice_service, service_manager_type;
-type etsd_service,                  service_manager_type;
-type pq_service, service_manager_type;
-type guiext-server_service, service_manager_type;
 type vtservice_service, service_manager_type;
