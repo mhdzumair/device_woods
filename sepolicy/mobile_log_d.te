@@ -51,8 +51,8 @@ allow mobile_log_d logmisc_data_file:dir { relabelto create_dir_perms };
 allow mobile_log_d logmisc_data_file:file create_file_perms;
 
 #data/log_temp
-allow mobile_log_d logtemp_data_file:dir { relabelto create_dir_perms };
-allow mobile_log_d logtemp_data_file:file create_file_perms;
+allow mobile_log_d logmisc_data_file:dir { relabelto create_dir_perms };
+allow mobile_log_d logmisc_data_file:file create_file_perms;
 
 #data/data_tmpfs_log
 allow mobile_log_d data_tmpfs_log_file:dir create_dir_perms;

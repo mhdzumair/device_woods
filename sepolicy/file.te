@@ -18,13 +18,8 @@ type teei_thh_data_file, file_type, data_file_type;
 # data_tmpfs_log
 type data_tmpfs_log_file, file_type, data_file_type;
 
-#mobilelog data/log_temp
-type logtemp_data_file, file_type, data_file_type;
-
 type sysfs_md32, fs_type, sysfs_type;
 type sysfs_scp, fs_type, sysfs_type;
-
-type nvram_data_file, file_type, data_file_type;
 
 # Socket types
 type volte_imcb_socket, file_type;
@@ -37,9 +32,6 @@ type rild_mal_socket, file_type;
 type rild_mal_at_socket, file_type;
 type rild_mal_md2_socket, file_type;
 type rild_mal_at_md2_socket, file_type;
-
-# add for fingerprint ET3XX
-type etsd_data_file, file_type, data_file_type;
 
 type custom_file, file_type, data_file_type;
 type radvd_data_file, file_type, data_file_type;

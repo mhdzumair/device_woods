@@ -2,9 +2,9 @@
 wakelock_use(ccci_fsd)
 
 #============= ccci_fsd MD NVRAM==============
-allow ccci_fsd nvram_data_file:dir create_dir_perms;
-allow ccci_fsd nvram_data_file:file create_file_perms;
-allow ccci_fsd nvram_data_file:lnk_file read;
+allow ccci_fsd nvdata_file:dir create_dir_perms;
+allow ccci_fsd nvdata_file:file create_file_perms;
+allow ccci_fsd nvdata_file:lnk_file read;
 allow ccci_fsd nvram_device:chr_file rw_file_perms;
 #============= ccci_fsd MD3 related==============
 allow ccci_fsd c2k_file:dir create_dir_perms;
