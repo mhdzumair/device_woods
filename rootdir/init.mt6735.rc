@@ -1,19 +1,7 @@
 # MTK platform .rc configure
 
-import init.connectivity.rc
-import init.project.rc
-import /FWUpgradeInit.rc
-import init.aee.rc
-import init.fon.rc
-import init.rilproxy.rc
+import init.mt6735.usb.rc
 import init.volte.rc
-import init.mal.rc
-import init.wfca.rc
-import init.epdg.rc
-import init.trustonic.rc
-import init.microtrust.rc
-import init.common_svc.rc
-import init.c2k.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
 import init.modem.rc
@@ -195,7 +183,7 @@ on post-fs-data
     chown root diag /sys/module/tpd_debug/parameters/tpd_em_log
     chown root diag /sys/module/tpd_debug/parameters/tpd_em_log_to_fs
 
-   
+
     chmod 0666 /dev/pmem_multimedia
 
     # watch dog kicker
@@ -412,7 +400,7 @@ on post-fs-data
 
     chmod 0660 /dev/mtk_disp_mgr
     chown system graphics /dev/mtk_disp_mgr
-  
+
     chmod 0660 /sys/devices/platform/mtk_disp_mgr.0/rgb
     chown system system /sys/devices/platform/mtk_disp_mgr.0/rgb
 
@@ -609,7 +597,7 @@ on post-fs-data
 
     # Utags
     mkdir /persist/utags
-    wait /dev/block/bootdevice/by-name/utags 
+    wait /dev/block/bootdevice/by-name/utags
     start utags_check
 
 # End of adding by MTK drivers
@@ -1606,4 +1594,3 @@ service utags_check /system/bin/utags_check
     user root
     oneshot
     disabled
-

@@ -9,6 +9,9 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := woods,woods_f,Moto_E4,Moto E4,e4
 
+PRODUCT_PACKAGES += \
+    libstlport
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.mt6737m
@@ -20,28 +23,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.mt6737m
 
-# ril_shim
-PRODUCT_PACKAGES += \
-		ril_shim
-
-LINKER_FORCED_SHIM_LIBS := $(LINKER_FORCED_SHIM_LIBS):/system/vendor/bin/mtkrild|ril_shim.so
-
 # MTK stuff
 BOARD_USES_MTK_HARDWARE := true
-
-# Disable adb security
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	ro.mount.fs=EXT4 \
-	ro.adb.secure=0 \
-	ro.secure=0 \
-	ro.allow.mock.location=0 \
-	ro.debuggable=1 \
-	persist.service.acm.enable=0 \
-	ro.config.low_ram=false
-
-ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += persist.service.adb.enable=1
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -66,12 +49,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
     $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
     $(LOCAL_PATH)/rootdir/fstab.mt6735:root/fstab.mt6735 \
-		$(LOCAL_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
-		$(LOCAL_PATH)/rootdir/init.microtrust.rc:root/init.microtrust.rc \
     $(LOCAL_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
     $(LOCAL_PATH)/rootdir/init.mt6735.rc:root/init.mt6735.rc \
     $(LOCAL_PATH)/rootdir/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
-		$(LOCAL_PATH)/rootdir/init.rilproxy.rc:root/init.rilproxy.rc \
 		$(LOCAL_PATH)/rootdir/init.volte.rc:root/init.volte.rc \
     $(LOCAL_PATH)/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
     $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \

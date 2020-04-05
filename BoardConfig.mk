@@ -62,9 +62,6 @@ include vendor/mad/config/symbols.mk
 #audio
 TARGET_HAS_PRE_N_AUDIO := true
 
-# Use custom init.rc
-#TARGET_PROVIDES_INIT_RC := true
-
 # Display
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
@@ -102,6 +99,3 @@ BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
 
 #includ header patch
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-
-# Add ril stuff
-BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
