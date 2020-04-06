@@ -709,11 +709,6 @@ on boot
     chown system /dev/ttyGS1
 
 
-on property:ro.board.platform=mt6753
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-    write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1300000
-
 on property:vold.decrypt=trigger_reset_main
     write /proc/bootprof "INIT:vold.decrypt=trigger_reset_main"
     start stop_modem
@@ -730,7 +725,6 @@ on property:vold.decrypt=trigger_restart_min_framework
     start sysenv_daemon
     start start_modem
     start msensord
-    start permission_check
     start stp_dump
 
 on property:vold.decrypt=trigger_restart_framework
@@ -739,12 +733,10 @@ on property:vold.decrypt=trigger_restart_framework
     start sysenv_daemon
     start start_modem
     start msensord
-    start permission_check
 
 on property:vold.decrypt=trigger_shutdown_framework
     write /proc/bootprof "INIT:vold.decrypt=trigger_shutdown_framework"
     start stop_modem
-    start swapoff_action
     stop stp_dump
     setprop sys.boot_completed 0
     setprop dev.bootcomplete 0
@@ -780,43 +772,6 @@ on property:debug.MB.prdebug=1
     write /sys/kernel/debug/dynamic_debug/control "file *gpu* -p"
 on property:debug.MB.prdebug=0
     write /sys/kernel/debug/dynamic_debug/control "file *mediatek* -p"
-#Begin qiaoshan enable aplogd
-on property:persist.log.aplogd.enable=1
-    start aplogd
-
-on property:persist.log.aplogd.enable=0
-    stop aplogd
-
-service aplogd /system/bin/aplogd
-    class late_start
-    #user log
-    #group log system sdcard_rw sdcard_r media_rw mount
-    # The user and group definitions above are intentionally disabled and left
-    # only as documentation. It actually starts as root and immediately drops
-    # to log plus those groups after preserving CAP_SYS_ADMIN, which is required
-    # for kernel logging.
-    disabled
-#End qiaoshan enable aplogd
-
-
-on property:init.svc.bugreport=running
-    write /sys/power/wake_lock bug2go-native
-
-on property:init.svc.bugreport=stopping
-    write /sys/power/wake_unlock bug2go-native
-
-on property:init.svc.bugreport=stopped
-    write /sys/power/wake_unlock bug2go-native
-
-# VOLUME_UP + PWR
-service bugreport /system/bin/bug2go-bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 115 116
-
-#End qiaoshan enable moto bug2go-bugreport
-
 
 service ged_srv /vendor/bin/ged_srv
     class core
@@ -962,30 +917,6 @@ service PPLAgent /vendor/bin/ppl_agent
     user root
     group system cache
 
-
-service cmmb /system/bin/cmmbsp
-    class main
-    user root
-    group system audio camera graphics inet net_bt net_bt_admin net_bw_acct media
-    ioprio rt 4
-
-service enableswap /system/bin/sh /enableswap.sh
-    class late_start
-    oneshot
-    seclabel u:r:enableswap:s0
-
-service swapoff_action /system/bin/sh /disableswap.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:disableswap:s0
-
-service dbus /system/bin/dbus-daemon --system --nofork
-    class main
-    socket dbus stream 660 bluetooth bluetooth
-    user bluetooth
-    group bluetooth net_bt_admin
-
 service bluetoothd /system/bin/bluetoothd -n
     class main
     socket bluetooth stream 660 bluetooth bluetooth
@@ -1001,20 +932,6 @@ service pppd_gprs /system/bin/pppd_dt /dev/ttyACM0 debug noauth refuse-eap usepe
     disabled
     oneshot
 
-##Add by T.Zh for ppp daemon
-#service pppd /system/bin/pppd file /data/misc/ppp/ppp_options
-#    user root
-#    disabled
-#    oneshot
-#
-##
-#
-#  Modem related services (End)
-#
-
-#service agpsdcainit /system/bin/agpscacertinit
-#    class main
-#    oneshot
 
 service agpsd /vendor/bin/mtk_agpsd
     class main
@@ -1043,27 +960,10 @@ service batterywarning /vendor/bin/batterywarning
     user system
     group system
 
-#service BGW /vendor/xbin/BGW
-#	user system
-#	group gps system radio
-#	class main
 service MtkCodecService /vendor/bin/MtkCodecService
     class main
     user system
     group audio media sdcard_r
-
-
-# OperaMax Service
-service OperaMaxSystem /system/bin/OperaMaxSystem
-    socket tunman stream 0666 system system
-    class main
-    disabled
-
-on property:persist.service.operamax=1
-    start OperaMaxSystem
-
-on property:persist.service.operamax=0
-    stop OperaMaxSystem
 
 service charge_only_mode /system/bin/charge_only_mode
      user root
@@ -1113,16 +1013,3 @@ on property:ro.hw.dualsim=true
 
 on property:ro.hw.dualsim=false
    setprop persist.radio.multisim.config ss
-
-# Write utag from property
-service mbm_spy /system/bin/mbm_spy
-    seclabel u:r:mbm_spy:s0
-    class late_start
-    user root
-    oneshot
-
-service utags_check /system/bin/utags_check
-    class core
-    user root
-    oneshot
-    disabled

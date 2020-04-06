@@ -36,7 +36,7 @@ on boot
 # Connectivity related services (Begin)
 #
 
-service wmtLoader /system/bin/wmt_loader
+service wmtLoader /vendor/bin/wmt_loader
     user root
     group root
     oneshot

@@ -422,7 +422,7 @@ service encrypt /system/bin/vdc --wait cryptfs enablecrypto inplace default
 
 service meta_tst /system/bin/meta_tst
 
-service nvram_daemon /system/bin/nvram_daemon
+service nvram_daemon /vendor/bin/nvram_daemon
     class main
     user root
     group system
@@ -434,7 +434,7 @@ service debuggerd /system/bin/debuggerd
 service debuggerd64 /system/bin/debuggerd64
     class main
 
-service mobile_log_d /system/bin/mobile_log_d
+service mobile_log_d /vendor/bin/mobile_log_d
     class main
 
 on property:ro.boot.mblogenable=0
