@@ -1402,25 +1402,12 @@ service sn /vendor/bin/sn
     group system sdcard_rw
     oneshot
 
-#add for power-off alarm
-service poad /vendor/bin/poad
-    class main
-    user system
-    group system
-    oneshot
-
 #monitor battery status
 service batterywarning /vendor/bin/batterywarning
     class main
     user system
     group system
 
-
-
-#service BGW /vendor/xbin/BGW
-#	user system
-#	group gps system radio
-#	class main
 service MtkCodecService /vendor/bin/MtkCodecService
     class main
     user system
@@ -1432,17 +1419,6 @@ service guiext-server /vendor/bin/guiext-server
     user system
     group system graphics
 
-# OperaMax Service
-service OperaMaxSystem /system/bin/OperaMaxSystem
-    socket tunman stream 0666 system system
-    class main
-    disabled
-
-on property:persist.service.operamax=1
-    start OperaMaxSystem
-
-on property:persist.service.operamax=0
-    stop OperaMaxSystem
 
 service charge_only_mode /system/bin/charge_only_mode
      user root
@@ -1487,21 +1463,6 @@ chown root /system/bin/pppd
 chmod 4755 /system/bin/pppd
 chown root /vendor/bin/chat
 chmod 4755 /vendor/bin/chat
-
-#
-#ril-daemon (begin)
-#
-service ril-3gddaemon /vendor/bin/rild_dongle
-    class main
-    socket rild-dongle stream 660 root radio
-    socket rild-dongle-debug stream 660 radio radio
-    user root
-    group radio cache inet misc audio log
-    disabled
-
-#
-#ril-daemon (end)
-#
 
 #
 #usbdongled(begin)
@@ -1588,22 +1549,8 @@ on property:ro.hw.dualsim=false
    setprop persist.radio.multisim.config ss
 
 # Write utag from property
-service mbm_spy /system/bin/mbm_spy
-    seclabel u:r:mbm_spy:s0
-    class late_start
-    user root
-    oneshot
-
-service oem-hw-sh /init.oem.hw.sh
-    seclabel u:r:init_hw:s0
-    class core
-    user root
-    oneshot
-    disabled
-
 service utags_check /system/bin/utags_check
     class core
     user root
     oneshot
     disabled
-
