@@ -3,8 +3,8 @@
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common los stuff.
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/motorola/woods/device.mk)
@@ -23,12 +23,6 @@ PRODUCT_NAME := lineage_woods
 PRODUCT_BRAND := Motorola
 PRODUCT_MODEL := Moto E4
 PRODUCT_MANUFACTURER := Motorola
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=motorola/woods/woods:7.1.1/NMA26.42-169/300:user/release-keys \
-    PRIVATE_BUILD_DESC="woods-user 7.1.1 NMA26.42-169 300 release-keys"
-
-PRODUCT_GMS_CLIENTID_BASE := android-motorola
-
+\
 PRODUCT_DEFAULT_LANGUAGE := en
 PRODUCT_DEFAULT_REGION   := US

@@ -55,15 +55,15 @@ TARGET_USERIMAGES_USE_F2FS := true
 # Include needed symbols
 TARGET_INCLUDE_XLOG_SYMBOLS := true
 TARGET_INCLUDE_AUDIO_SYMBOLS := true
-TARGET_INCLUDE_GPS_SYMBOLS := true
 TARGET_INCLUDE_UI_SYMBOLS := true
+TARGET_INCLUDE_GUI_SYMBOLS := true
+TARGET_INCLUDE_CAMERA_SYMBOLS := true
 include vendor/mad/config/symbols.mk
 
 #audio
 TARGET_HAS_PRE_N_AUDIO := true
 
-# Use custom init.rc
-#TARGET_PROVIDES_INIT_RC := true
+TARGET_USES_NON_TREBLE_CAMERA := true
 
 # Display
 TARGET_SCREEN_HEIGHT := 1280
@@ -77,7 +77,7 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/fstab.mt6735
 # TWRP-specific
 ifeq ($(RECOVERY_VARIANT), twrp)
 DEVICE_RESOLUTION := 720x1280
@@ -99,9 +99,3 @@ BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
 # Seccomp filter
 BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
-
-#includ header patch
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-
-# Add ril stuff
-BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
