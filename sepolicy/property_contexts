@@ -7,3 +7,11 @@ persist.mtk.main.attach u:object_r:persist_mtk_main_attach:s0
 #=============allow wifi offload deamon  ==============
 net.wo.   u:object_r:mtk_wod_prop:s0
 persist.net.wo.   u:object_r:persist_wod_prop:s0
+
+#=============allow netlog==============
+#debug.mtklog.init.flag
+debug.mtklog  u:object_r:debug_mtklog_prop:s0
+#persist.mtklog.log2sd.path
+persist.mtklog u:object_r:persist_mtklog_prop:s0
+#debug.netlog.stopreason
+debug.netlog u:object_r:debug_netlog_prop:s0

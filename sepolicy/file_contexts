@@ -53,6 +53,7 @@
 /data/misc/setkey/setkey.conf        u:object_r:ims_ipsec_data_file:s0
 /data/misc/setkey/setkey_bak.conf    u:object_r:ims_ipsec_data_file:s0
 /data/misc/setkey/setkey_latest.conf u:object_r:ims_ipsec_data_file:s0
+/persist(/.*)?         u:object_r:persist_data_file:s0
 
 #sysfs
 /sys/devices/virtual/misc/md32(/.*)?  u:object_r:sysfs_md32:s0
@@ -88,9 +89,12 @@
 /dev/eemcs.* u:object_r:eemcs_device:s0
 /dev/misc(/.*)? u:object_r:misc_device:s0
 /dev/wmtdetect(/.*)? u:object_r:wmtdetect_device:s0
+/dev/pro_info(/.*)? u:object_r:pro_info_device:s0
 
 # Custom files
 /custom(/.*)?		u:object_r:custom_file:s0
 
 #block
 /dev/block/mmcblk0 u:object_r:mmcblk0_block_device:s0
+/dev/block/platform/mtk-msdc\.0/[0-9]+\.msdc0/by-name/persist           u:object_r:persist_block_device:s0
+/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/oem	u:object_r:oem_block_device:s0

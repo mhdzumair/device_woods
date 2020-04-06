@@ -56,3 +56,4 @@ type rild_oem_socket, file_type;
 type vtservice_data_file, file_type, data_file_type;
 # gpu debugfs file
 type debugfs_ged, fs_type, debugfs_type;
+type persist_data_file, file_type, data_file_type;

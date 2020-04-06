@@ -1,2 +1,12 @@
-#Added for policy for system_server Mohamed Zumair
+#Added for policy for fsck Mohamed Zumair
 allow fsck block_device:blk_file { ioctl };
+
+# Date : WK15.29
+# Operation : Migration
+# Purpose : file system check for protect1/protect2/nvdata/persist/nvcfg block devices.
+allow fsck protect1_device:blk_file rw_file_perms;
+allow fsck protect2_device:blk_file rw_file_perms;
+allow fsck nvdata_device:blk_file rw_file_perms;
+allow fsck persist_block_device:blk_file rw_file_perms;
+allow fsck nvcfg_block_device:blk_file rw_file_perms;
+allow fsck oem_block_device:blk_file rw_file_perms;

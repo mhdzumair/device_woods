@@ -21,3 +21,4 @@ allow init media_rw_data_file:file { append };
 allow init stpwmt_device:chr_file { write };
 allow init teei_client_device:chr_file { write ioctl };
 allow init teei_data_file:file { append };
+allow init aal_als_device:chr_file { ioctl };
