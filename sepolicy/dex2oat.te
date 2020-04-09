@@ -1,0 +1,1 @@
+allow dex2oat debugfs_trace_marker:file { write open };

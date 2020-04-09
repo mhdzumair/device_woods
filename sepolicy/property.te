@@ -37,3 +37,5 @@ type persist_wod_prop, property_type, mtk_property_type;
 type debug_mtklog_prop, property_type, mtk_property_type;
 type persist_mtklog_prop, property_type, mtk_property_type;
 type debug_netlog_prop, property_type, mtk_property_type;
+
+type persist_dm_prop, property_type, mtk_property_type;

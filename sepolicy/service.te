@@ -1,3 +1,7 @@
+#Added By Mohamed Zumair
 type aal_service, service_manager_type;
 type terservice_service, service_manager_type;
 type vtservice_service, service_manager_type;
+type mtk_codec_service_service, service_manager_type;
+type dm_agent_binder_service, service_manager_type;
+type ged_srv_service, service_manager_type;

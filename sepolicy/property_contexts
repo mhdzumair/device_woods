@@ -15,3 +15,6 @@ debug.mtklog  u:object_r:debug_mtklog_prop:s0
 persist.mtklog u:object_r:persist_mtklog_prop:s0
 #debug.netlog.stopreason
 debug.netlog u:object_r:debug_netlog_prop:s0
+
+# persist.dm.lock
+persist.dm. u:object_r:persist_dm_prop:s0

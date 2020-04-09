@@ -1,2 +1,6 @@
 #Added for policy for system_server Mohamed Zumair
 allow mnld sysfs_boot_mode:file { read open };
+allow mnld mnt_user_file:dir { search };
+allow mnld mnt_user_file:lnk_file { read };
+allow mnld media_rw_data_file:dir { search read open };
+allow mnld sdcardfs:dir { search };

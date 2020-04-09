@@ -22,3 +22,5 @@ allow init stpwmt_device:chr_file { write };
 allow init teei_client_device:chr_file { write ioctl };
 allow init teei_data_file:file { append };
 allow init aal_als_device:chr_file { ioctl };
+allow init functionfs:dir { mounton };
+allow init wmtWifi_device:chr_file { write };

@@ -1,2 +1,5 @@
 #Added policy for cameraserver by Mohamed Zumair
 allow cameraserver device:chr_file { ioctl };
+allow cameraserver init:unix_stream_socket { connectto };
+allow cameraserver property_socket:sock_file { write };
+allow cameraserver debugfs_trace_marker:file { write open };

@@ -37,3 +37,5 @@ type MTK_SMI_device, dev_type;
 type pro_info_device, dev_type;
 type persist_block_device, dev_type;
 type oem_block_device, dev_type;
+type usb_ffs_device, dev_type;
+type otp_device, dev_type;

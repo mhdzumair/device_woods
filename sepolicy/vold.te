@@ -1,0 +1,2 @@
+#Added By Mohamed Zumair
+allow vold persist_data_file:dir { read open ioctl };

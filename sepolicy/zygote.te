@@ -1,0 +1,1 @@
+allow zygote debugfs_trace_marker:file { getattr write open };
