@@ -1,2 +1,2 @@
 #Added by Mohamed Zumair
-allow debuggerd init:process { ptrace };
+allow debuggerd init:process getsched;

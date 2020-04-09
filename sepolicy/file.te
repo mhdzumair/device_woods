@@ -32,6 +32,7 @@ type rild_mal_socket, file_type;
 type rild_mal_at_socket, file_type;
 type rild_mal_md2_socket, file_type;
 type rild_mal_at_md2_socket, file_type;
+type netdiag_socket, file_type;
 
 type custom_file, file_type, data_file_type;
 type radvd_data_file, file_type, data_file_type;
@@ -57,4 +58,8 @@ type vtservice_data_file, file_type, data_file_type;
 # gpu debugfs file
 type debugfs_ged, fs_type, debugfs_type;
 type persist_data_file, file_type, data_file_type;
-type debugfs_trace_marker, fs_type, debugfs_type;
+type akmd8963_access_file1, file_type,data_file_type;
+type akmd8963_access_file2, file_type,data_file_type;
+type msensor_data_file, file_type, data_file_type;
+#autokd data file
+type autokd_data_file, file_type, data_file_type;

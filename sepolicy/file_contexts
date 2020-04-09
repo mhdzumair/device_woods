@@ -54,16 +54,12 @@
 /data/misc/setkey/setkey_bak.conf    u:object_r:ims_ipsec_data_file:s0
 /data/misc/setkey/setkey_latest.conf u:object_r:ims_ipsec_data_file:s0
 /persist(/.*)?         u:object_r:persist_data_file:s0
-/data/system/users/[0-9]+/fpdata(/.*)?	u:object_r:fingerprintd_data_file:s0
 /data/misc/akmd_set.txt u:object_r:akmd8963_access_file1:s0
 /data/misc/PDC.ini u:object_r:akmd8963_access_file2:s0
 
 #sysfs
 /sys/devices/virtual/misc/md32(/.*)?  u:object_r:sysfs_md32:s0
 /sys/devices/virtual/misc/scp(/.*)?  u:object_r:sysfs_scp:s0
-
-#trace_marker
-/sys/kernel/debug/tracing/trace_marker	u:object_r:debugfs_trace_marker:s0
 
 #socket
 /dev/socket/volte_imsm(/.*)? u:object_r:rild_imsm_socket:s0
@@ -120,6 +116,5 @@
 /(system\/vendor|vendor)/bin/akmd09911 u:object_r:akmd09911_exec:s0
 /(system\/vendor|vendor)/bin/akmd8975 u:object_r:akmd8975_exec:s0
 /(system\/vendor|vendor)/bin/dm_agent_binder u:object_r:dm_agent_binder_exec:s0
-/(system\/vendor|vendor)/bin/gsm0710muxdmd2 u:object_r:gsm0710muxdmd2_exec:s0
 /(system\/vendor|vendor)/bin/init_thh u:object_r:init_thh_service_exec:s0
 /(system\/vendor|vendor)/bin/sysenv_daemon u:object_r:sysenv_daemon_exec:s0

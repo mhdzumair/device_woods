@@ -38,8 +38,6 @@ allow autokd system_data_file:dir rw_dir_perms;
 allow autokd autokd_data_file:file create_file_perms;
 allow autokd system_file:file execute_no_trans;
 allow autokd block_device:dir search;
-allow autokd nvram_data_file:dir rw_dir_perms;
-allow autokd nvram_data_file:file create_file_perms;
 allow autokd nvram_device:dir search;
 allow autokd nvram_device:blk_file rw_file_perms;
 allow autokd mmcblk0_block_device:blk_file rw_file_perms;
