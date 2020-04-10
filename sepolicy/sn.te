@@ -33,14 +33,13 @@ allow sn sysfs:file write;
 allow sn self:capability { dac_read_search dac_override };
 allow sn mnt_user_file:dir search;
 allow sn mnt_user_file:lnk_file read;
-#allow sn storage_file:dir search;
+allow sn storage_file:dir search;
 allow sn storage_file:lnk_file read;
 # Date : WK16.32
 # Operation : SQC
 # Purpose : for sn service access serial number file
-allow sn media_rw_data_file:dir search;
+allow sn media_rw_data_file:dir { read open search };
 allow sn media_rw_data_file:file { open read };
 
 # izaqkull add {20180518}
 allow sn tmpfs:dir { search };
-

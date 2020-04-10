@@ -52,3 +52,6 @@ allow boot_logo_updater rootfs:file r_file_perms;
 # Operation : Global_Device/Uniservice Feature
 # Purpose : for it to read-write SysEnv data
 allow boot_logo_updater para_block_device:blk_file rw_file_perms;
+
+#Added by Mohamed Zumair
+allow boot_logo_updater sysfs_boot_mode:file rw_file_perms;

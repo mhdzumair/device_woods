@@ -38,3 +38,7 @@ type pro_info_device, dev_type;
 type persist_block_device, dev_type;
 type oem_block_device, dev_type;
 type usb_ffs_device, dev_type;
+type rfkill_device, dev_type;
+type CAM_CAL_DRV1_device, dev_type;
+type CAM_CAL_DRV2_device, dev_type;
+type CAM_CAL_DRV3_device, dev_type;
