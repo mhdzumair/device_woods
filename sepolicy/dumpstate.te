@@ -1,0 +1,42 @@
+#Added By Mohamed Zumair
+allow dumpstate MtkCodecService:binder call;
+allow dumpstate gatekeeper_service:service_manager find;
+allow dumpstate self:capability sys_admin;
+allow dumpstate proc_ged:file {open read write ioctl getattr};
+allow dumpstate kernel:system { module_request };
+
+allow dumpstate init:process { getsched };
+allow dumpstate kernel:process { getsched };
+allow dumpstate ueventd:process { getsched };
+allow dumpstate teei_daemon:process { getsched };
+allow dumpstate logd:process { getsched };
+allow dumpstate debuggerd:process { getsched };
+allow dumpstate vold:process { getsched };
+allow dumpstate healthd:process { getsched };
+allow dumpstate ccci_fsd:process { getsched };
+allow dumpstate ccci_mdinit:process { getsched };
+allow dumpstate lmkd:process { getsched };
+allow dumpstate servicemanager:process { getsched };
+allow dumpstate surfaceflinger:process { getsched };
+allow dumpstate em_svr:process { getsched };
+allow dumpstate netdiag:process { getsched };
+allow dumpstate sysenv_daemon:process { getsched };
+allow dumpstate pq:process { getsched };
+allow dumpstate aal:process { getsched };
+allow dumpstate mtk_agpsd:process { getsched };
+allow dumpstate slpd:process { getsched };
+allow dumpstate nvram_agent_binder:process { getsched };
+allow dumpstate thermal:process { getsched };
+allow dumpstate thermald:process { getsched };
+
+allow dumpstate userinit_prop:file { open getattr };
+allow dumpstate adbsecure_prop:file { open getattr };
+allow dumpstate recovery_prop:file { open getattr };
+allow dumpstate adbtcp_prop:file { open getattr };
+allow dumpstate adbtcp_prop:file { open getattr };
+allow dumpstate persist_mtk_main_attach:file { open getattr };
+allow dumpstate vold_encryption_type_prop:file { open getattr };
+allow dumpstate safemode_prop:file { open getattr };
+allow dumpstate mmc_prop:file { open getattr };
+allow dumpstate logpersistd_logging_prop:file { open getattr };
+allow dumpstate device_logging_prop:file { open getattr };
