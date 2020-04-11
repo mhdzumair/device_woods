@@ -1,0 +1,2 @@
+#Added by Mohamed Zumair
+allow logd self:capability { dac_override }

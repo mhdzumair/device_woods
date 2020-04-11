@@ -38,3 +38,5 @@ allow priv_app          ged_srv_service:service_manager     find;
 allow system_app        ged_srv_service:service_manager     find;
 allow untrusted_app     ged_srv_service:service_manager     find;
 
+#debugfs_ged
+allow ged_srv debugfs_ged:file { write open getattr };
