@@ -39,3 +39,11 @@ type persist_mtklog_prop, property_type, mtk_property_type;
 type debug_netlog_prop, property_type, mtk_property_type;
 
 type persist_dm_prop, property_type, mtk_property_type;
+
+#=============allow AEE==============
+type persist_mtk_aee_prop, property_type, mtk_core_property_type;
+type persist_aee_prop, property_type, mtk_core_property_type;
+type debug_mtk_aee_prop, property_type, mtk_core_property_type;
+
+#=============allow aee_dumpstate==============
+type debug_bq_dump_prop, property_type, mtk_core_property_type;

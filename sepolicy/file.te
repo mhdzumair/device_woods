@@ -63,3 +63,10 @@ type akmd8963_access_file2, file_type,data_file_type;
 type msensor_data_file, file_type, data_file_type;
 #autokd data file
 type autokd_data_file, file_type, data_file_type;
+
+# NE core_forwarder
+type aee_core_data_file, file_type, data_file_type;
+
+# AEE exp
+type aee_exp_data_file, file_type, data_file_type;
+type aee_dumpsys_data_file, file_type, data_file_type;
