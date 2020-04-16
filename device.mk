@@ -20,6 +20,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.mt6737m
 
+#wpa_client
+PRODUCT_PACKAGES += \
+		libwpa_client
+
 # MTK stuff
 BOARD_USES_MTK_HARDWARE := true
 
