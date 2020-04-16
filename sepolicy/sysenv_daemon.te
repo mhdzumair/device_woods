@@ -33,6 +33,3 @@ allow sysenv_daemon self:netlink_socket { read bind create };
 
 # izaqkull add {20180518}
 allow sysenv_daemon sysfs:file { read open };
-
-#Added by Mohamed Zumair
-allow sysenv_daemon proc:file { read write open ioctl }

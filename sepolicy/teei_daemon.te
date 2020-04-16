@@ -43,5 +43,3 @@ allow teei_daemon ut_keymaster_device:chr_file rw_file_perms;
 #added by Mohamed Zumair
 allow teei_daemon fingerprintd_data_file:dir { search write add_name };
 allow teei_daemon fingerprintd_data_file:file { create read write open };
-allow teei_daemon system_data_file:dir { write add_name create };
-allow teei_daemon system_data_file:file { read write open create };

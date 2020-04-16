@@ -56,6 +56,7 @@
 /persist(/.*)?         u:object_r:persist_data_file:s0
 /data/misc/akmd_set.txt u:object_r:akmd8963_access_file1:s0
 /data/misc/PDC.ini u:object_r:akmd8963_access_file2:s0
+/data/misc/egistec(/.*)? u:object_r:fingerprintd_data_file:s0
 
 #sysfs
 /sys/devices/virtual/misc/md32(/.*)?  u:object_r:sysfs_md32:s0
@@ -99,9 +100,6 @@
 /dev/CAM_CAL_DRV1(/.*)? u:object_r:CAM_CAL_DRV1_device:s0
 /dev/CAM_CAL_DRV2(/.*)? u:object_r:CAM_CAL_DRV2_device:s0
 /dev/CAM_CAL_DRV3(/.*)? u:object_r:CAM_CAL_DRV3_device:s0
-
-#proc
-/proc/lk_env u:object_r:proc_lk_env:s0
 
 # Custom files
 /custom(/.*)?		u:object_r:custom_file:s0
