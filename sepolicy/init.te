@@ -25,5 +25,5 @@ allow init aal_als_device:chr_file { ioctl };
 allow init functionfs:dir { mounton };
 allow init wmtWifi_device:chr_file { write };
 allow init usb_ffs_device:dir { mounton };
-allow init shell_data_file:file { create write open };
-allow init shell_data_file:dir { write open add_name };
+allow init shell_data_file:file { create write };
+allow init shell_data_file:dir { open };
