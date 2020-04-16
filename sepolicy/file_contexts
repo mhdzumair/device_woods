@@ -126,6 +126,3 @@
 /(system\/vendor|vendor)/bin/aal u:object_r:aal_exec:s0
 /(system\/vendor|vendor)/bin/slpd u:object_r:slpd_exec:s0
 /(system\/vendor|vendor)/bin/MtkCodecService u:object_r:MtkCodecService_exec:s0
-
-#debugfs
-/sys/kernel/debug/ged(/.*)?	u:object_r:debugfs_ged:s0
