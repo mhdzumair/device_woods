@@ -1,2 +1,8 @@
 #Added for policy for system_server Mohamed Zumair
+
+binder_use(nvram_agent_binder)
+binder_service(nvram_agent_binder)
+allow nvram_agent_binder nvram_agent_service:service_manager add;
+
 allow nvram_daemon sysfs_boot_mode:file { read open };
+allow nvram_daemon system_data_file:lnk_file { read };

@@ -1,2 +1,3 @@
 #Added for policy for system_server Mohamed Zumair
 allow mnld sysfs_boot_mode:file { read open };
+allow mnld init:unix_dgram_socket { sendto };

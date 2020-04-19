@@ -1,2 +1,3 @@
 #Added policy for cameraserver by Mohamed Zumair
 allow cameraserver device:chr_file { ioctl };
+allow cameraserver sysfs_devices_system_cpu:file { read open };

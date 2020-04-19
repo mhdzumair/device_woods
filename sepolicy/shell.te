@@ -41,3 +41,4 @@ userdebug_or_eng(`
 ')
 
 allow shell mtkrildmd2_exec:file rx_file_perms;
+allow shell sysfs_devices_system_cpu:file { read open };

@@ -3,3 +3,4 @@ allow audioserver device:chr_file { ioctl };
 allow audioserver init:unix_stream_socket { connectto };
 allow audioserver sysfs_boot_mode:file { read open };
 allow audioserver property_socket:sock_file { write };
+allow audioserver sysfs_devices_system_cpu:file { read open };

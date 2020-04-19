@@ -1,0 +1,3 @@
+#Added by Mohamed Zumair
+allow crash_dump sysfs_devices_system_cpu:file { read open };
+allow crash_dump init:process { signal };

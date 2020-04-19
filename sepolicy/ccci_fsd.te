@@ -25,3 +25,4 @@ allow ccci_fsd kmsg_device:chr_file w_file_perms;
 allow ccci_fsd proc_lk_env:file rw_file_perms;
 
 allow ccci_fsd device:chr_file { ioctl };
+allow ccci_fsd sysfs_wake_lock:file { read write open };

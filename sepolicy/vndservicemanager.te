@@ -1,0 +1,2 @@
+#Added by Mohamed Zumair
+allow vndservicemanager sysfs_devices_system_cpu:file { read open getattr };

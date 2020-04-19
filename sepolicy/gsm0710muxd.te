@@ -1,0 +1,2 @@
+allow gsm0710muxd sysfs_devices_system_cpu:file { read open };
+allow gsm0710muxd self:capability { fowner };

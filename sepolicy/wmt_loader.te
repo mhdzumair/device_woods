@@ -1,0 +1,2 @@
+#Added by Mohamed Zumair
+allow wmt_loader sysfs_devices_system_cpu:file { read open getattr };
