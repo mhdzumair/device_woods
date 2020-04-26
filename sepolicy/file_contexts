@@ -108,3 +108,5 @@
 /(system\/vendor|vendor)/bin/terservice u:object_r:terservice_exec:s0
 /(system\/vendor|vendor)/bin/init_thh u:object_r:init_thh_service_exec:s0
 /(system\/vendor|vendor)/bin/aal u:object_r:aal_exec:s0
+/(system\/vendor|vendor)/bin/hwservicemanager u:object_r:hwservicemanager_exec:s0
+/(system\/vendor|vendor)/bin/terservice u:object_r:terservice_exec:s0

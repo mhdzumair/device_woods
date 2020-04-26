@@ -1,2 +1,3 @@
 #Added by Mohamed Zumair
+binder_use(hwservicemanager);
 allow hwservicemanager sysfs_devices_system_cpu:file { read open getattr };
