@@ -54,7 +54,7 @@ service wmt_launcher /vendor/bin/wmt_launcher -p /vendor/firmware/
     user system
     group system
     class core
-   
+
 on property:service.wcn.coredump.mode=2
 start stp_dump
 
@@ -72,16 +72,6 @@ service mnld /vendor/bin/mnld
     group gps inet misc sdcard_rw sdcard_r media_rw system radio
     socket mnld stream 660 gps system
 
-service MPED /vendor/bin/MPED
-    class main
-    user gps
-    group gps inet misc sdcard_rw sdcard_r media_rw system
-    socket MPED stream 660 gps system
-
-#service BGW /vendor/bin/BGW
-#    user system
-#    group gps system radio
-#    class main
 
 # Wlan
 service wifi2agps /vendor/bin/wifi2agps
@@ -120,4 +110,3 @@ service wpa_supplicant /system/bin/wpa_supplicant \
 #
 # Connectivity related services (End)
 #
-

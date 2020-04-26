@@ -1,18 +1,13 @@
 # MTK platform .rc configure
 
+import init.mt6735.usb.rc
 import init.connectivity.rc
 import init.project.rc
-import /FWUpgradeInit.rc
-import init.aee.rc
-import init.fon.rc
 import init.rilproxy.rc
 import init.volte.rc
 import init.mal.rc
 import init.epdg.rc
-import init.trustonic.rc
 import init.microtrust.rc
-import init.common_svc.rc
-import init.c2k.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
 import init.modem.rc
@@ -26,7 +21,7 @@ on early-init
 on init
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
-   
+
     # if primary storage is physical, set ro.vold.primary_physical to 1
     #setprop ro.vold.primary_physical 1
 
@@ -43,7 +38,7 @@ on init
     mkdir /custom
 
     mkdir /mnt/cd-rom 0000 system system
-    	
+
 # change lk_env permission
     chown root system /proc/lk_env
     chmod 0660 /proc/lk_env
@@ -84,7 +79,7 @@ on fs
     write /sys/kernel/debug/tracing/trace_marker "B|1|Mount"
     mount_all /fstab.mt6735
     #exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/userdata
-   	
+
     write /sys/kernel/debug/tracing/trace_marker "E"
     write /proc/bootprof "INIT:Mount_END"
 
@@ -119,6 +114,35 @@ on post-fs
 
     chown system system /protect_s
     chmod 0770 /protect_s
+    # Wifi
+    mknod /dev/wmtWifi c 153 0
+    chmod 0660 /dev/wmtWifi
+    chown system system /dev/wmtWifi
+
+    mknod /dev/stpwmt c 190 0
+    mknod /dev/stpgps c 191 0
+    mknod /dev/stpbt c 192 0
+
+    # BT
+    chmod 0660 /dev/stpbt
+    chown radio bluetooth /dev/stpbt
+
+    chmod 0660 /dev/stpwmt
+    chown system system /dev/stpwmt
+
+    chmod 0660 /dev/wmtdetect
+    chown system system /dev/wmtdetect
+
+    restorecon /dev/wmtWifi
+    restorecon /dev/stpwmt
+    restorecon /dev/stpbt
+    restorecon /dev/stpgps
+
+    # GPS
+    chmod 0660 /dev/gps
+    chown system gps /dev/gps
+    chmod 0660 /dev/stpgps
+    chown gps gps /dev/stpgps
 
 on post-fs-data
     write /proc/bootprof "INIT:post-fs-data"
@@ -143,10 +167,6 @@ on post-fs-data
     mkdir /dev/radio 0770 radio radio
 
     mkdir /data/drm/wv 0770 drm system
-
-# GPS
-    mkdir /data/gps_mnl 0771 gps system
-    mkdir /data/misc/gps 0770 gps system
 
     # NFC
     mkdir /data/nfc_socket 0771 nfc radio
@@ -194,7 +214,7 @@ on post-fs-data
     chown root diag /sys/module/tpd_debug/parameters/tpd_em_log
     chown root diag /sys/module/tpd_debug/parameters/tpd_em_log_to_fs
 
-   
+
     chmod 0664 /sys/devices/platform/leds-mt65xx/leds/red/brightness
     chmod 0664 /sys/devices/platform/leds-mt65xx/leds/green/brightness
     # End of Vanzo:tanglei
@@ -226,7 +246,7 @@ on post-fs-data
     #OFFLOAD SERVICE
     chmod 0640 /dev/offloadservice
     chown media media /dev/offloadservice
-    
+
 	# Sensor
     chmod 0660 /dev/hwmsensor
     chmod 0660 /dev/msensor
@@ -234,7 +254,6 @@ on post-fs-data
     chmod 0660 /dev/als_ps
     chmod 0660 /dev/gyroscope
     chmod 0660 /dev/aal_als
-    chmod 0660 /dev/m_batch_misc
 
     chmod 0660 /sys/devices/platform/msensor/driver/cpsopmode
     chmod 0660 /sys/devices/platform/msensor/driver/cpsreptxy
@@ -249,7 +268,7 @@ on post-fs-data
     chown radio system /dev/als_ps
     chown system system /dev/gyroscope
     chown system system /dev/aal_als
-    chown system system /dev/m_batch_misc
+
     chmod 0660 /sys/class/misc/m_acc_misc/accenablenodata
     chmod 0660 /sys/class/misc/m_acc_misc/accactive
     chmod 0660 /sys/class/misc/m_acc_misc/accdelay
@@ -260,8 +279,8 @@ on post-fs-data
     chown system system /sys/class/misc/m_acc_misc/accdelay
     chown system system /sys/class/misc/m_acc_misc/accbatch
     chown system system /sys/class/misc/m_acc_misc/accflush
-    
-chmod 0660 /sys/class/misc/m_mag_misc/magactive
+
+    chmod 0660 /sys/class/misc/m_mag_misc/magactive
     chmod 0660 /sys/class/misc/m_mag_misc/magdelay
     chmod 0660 /sys/class/misc/m_mag_misc/magbatch
     chmod 0660 /sys/class/misc/m_mag_misc/magflush
@@ -277,7 +296,7 @@ chmod 0660 /sys/class/misc/m_mag_misc/magactive
     chown system system /sys/class/misc/m_mag_misc/magodelay
     chown system system /sys/class/misc/m_mag_misc/magobatch
     chown system system /sys/class/misc/m_mag_misc/magoflush
-    
+
     chmod 0660 /sys/class/misc/m_batch_misc/batchactive
     chmod 0660 /sys/class/misc/m_batch_misc/batchdelay
     chmod 0660 /sys/class/misc/m_batch_misc/batchbatch
@@ -306,7 +325,7 @@ chmod 0660 /sys/class/misc/m_mag_misc/magactive
     chmod 0660 /sys/class/misc/m_alsps_misc/psdelay
     chmod 0660 /sys/class/misc/m_alsps_misc/psbatch
     chmod 0660 /sys/class/misc/m_alsps_misc/psflush
-    
+
     chown system system /sys/class/misc/m_alsps_misc/alsactive
     chown system system /sys/class/misc/m_alsps_misc/alsdelay
     chown system system /sys/class/misc/m_alsps_misc/alsbatch
@@ -332,16 +351,15 @@ chmod 0660 /sys/class/misc/m_mag_misc/magactive
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
 
     #VideoCodec
-    #insmod /vendor/lib/modules/vcodec_kernel_driver.ko
     mknod /dev/Vcodec c 160 0
     chmod 0660 /dev/Vcodec
-    chown media system /dev/Vcodec
+    chown media camera /dev/Vcodec
 
     #MJC
     #insmod /vendor/lib/modules/mjc_kernel_driver.ko
     #mknod /dev/MJC c 168 0
     chmod 0660 /dev/MJC
-    chown media system /dev/MJC
+    chown system media /dev/MJC
 
     #kpd
     chown radio radio /sys/devices/platform/mtk-kpd/driver/kpd_call_state
@@ -353,8 +371,8 @@ chmod 0660 /sys/class/misc/m_mag_misc/magactive
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_stop
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_ut
 
-    mkdir /data/amit/ 0770 system system
-		mkdir /data/misc/sensor 0774 system system
+    mkdir /data/amit 0770 system system
+    mkdir /data/misc/sensor 0774 system system
     mkdir /data/misc/akmd 0770 system system
     mkdir /data/misc/s62x 0771 compass compass
     mkdir /data/acdapi/ 0770 system system
@@ -418,7 +436,7 @@ chmod 0660 /sys/class/misc/m_mag_misc/magactive
 
     chmod 0660 /dev/mtk_disp_mgr
     chown system graphics /dev/mtk_disp_mgr
-  
+
     chmod 0660 /sys/devices/platform/mtk_disp_mgr.0/rgb
     chown system system /sys/devices/platform/mtk_disp_mgr.0/rgb
 
@@ -468,8 +486,8 @@ chmod 0660 /sys/class/misc/m_mag_misc/magactive
 
     # FM Radio device node
     mknod /dev/fm     c 193 0;
-    chmod 0660 /dev/fm
-    chown media media /dev/fm
+    chmod 0666 /dev/fm
+    chown system media /dev/fm
 
     # device apc settings
 
@@ -516,7 +534,10 @@ chmod 0660 /sys/class/misc/m_mag_misc/magactive
     chmod 0660 /dev/kd_camera_flashlight
     chmod 0660 /dev/kd_camera_hw_bus2
     chmod 0660 /dev/FM50AF
-   chmod 0660 /dev/CAM_CAL_DRV
+    chmod 0660 /dev/CAM_CAL_DRV
+    chmod 0660 /dev/CAM_CAL_DRV1
+    chmod 0660 /dev/CAM_CAL_DRV2
+    chmod 0660 /dev/CAM_CAL_DRV3
 
     chown system camera /dev/camera-sysram
     chown system camera /dev/camera-isp
@@ -527,6 +548,9 @@ chmod 0660 /sys/class/misc/m_mag_misc/magactive
     chown system camera /dev/kd_camera_hw_bus2
     chown system camera /dev/FM50AF
     chown system camera /dev/CAM_CAL_DRV
+    chown system camera /dev/CAM_CAL_DRV1
+    chown system camera /dev/CAM_CAL_DRV2
+    chown system camera /dev/CAM_CAL_DRV3
 
     #MATV
     chmod 0660 /dev/MATV
@@ -542,10 +566,12 @@ chmod 0660 /sys/class/misc/m_mag_misc/magactive
 
     # SMI
     chmod 0660 /dev/MTK_SMI
-    chown media media /dev/MTK_SMI
+    chown system camera /dev/MTK_SMI
 
-   #change partition permission
+    chown system camera /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
+    chmod 0660 /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
 
+    # change partition permission
     chmod 0640 /mtd@sec_ro
     chown root system /mtd@sec_ro
 
@@ -570,16 +596,13 @@ chmod 0660 /sys/class/misc/m_mag_misc/magactive
     chmod 0660 /mtd@misc
     chown root system /mtd@misc
 
-    chmod 0664 /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
-    chown media media /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
-
-    #mtk_sched
+    # mtk_sched
     chmod 0660 /dev/mtk_sched
     chown system media /dev/mtk_sched
 
-    #BT SCO CVSD, for MT6572 and MT6582 CVSD codec on AP
+    # BT SCO CVSD, for MT6572 and MT6582 CVSD codec on AP
     chmod 0660 /dev/ebc
-    chown media media /dev/ebc
+    chown system media /dev/ebc
 
     chmod 0666 /dev/uio0
 
@@ -587,23 +610,21 @@ chmod 0660 /sys/class/misc/m_mag_misc/magactive
     chmod 0660 /proc/driver/otp
     chown root system /proc/driver/otp
 
+    # Thermal
+    mkdir /data/.tp/ 0775 system system
 
     #sn
     chmod 0664 /sys/class/android_usb/android0/iSerial
     chown root system /sys/class/android_usb/android0/iSerial
     chmod 0664 /sys/devices/platform/mt_usb/cmode
     chown root system /sys/devices/platform/mt_usb/cmode
-   
+
 	# secure memory
     chown system system /proc/secmem0
 
     # AGPS
     mkdir /data/agps_supl 0771 gps system
-    	
-    chmod 0666 /dev/exm0
-	#Thermal	
-	mkdir /data/.tp/ 0775 system system 
-	
+
 # End of adding by MTK drivers
 # -----------------------
 
@@ -637,7 +658,7 @@ on boot
     chown system system /sys/class/leds/red/trigger
     chown system system /sys/class/leds/green/trigger
     chmod 0666 /sys/class/leds/torch/brightness
-    chown system system /sys/class/leds/torch/brightness    
+    chown system system /sys/class/leds/torch/brightness
     chown system system /sys/class/leds/blue/trigger
 
     chown system system /sys/kernel/debug/ged/hal/fps_upper_bound
@@ -720,7 +741,7 @@ on boot
     chown system /dev/ttyGS0
     chmod 660 /dev/ttyGS1
     chown system /dev/ttyGS1
- 
+
 
 on property:vold.decrypt=trigger_reset_main
     write /proc/bootprof "INIT:vold.decrypt=trigger_reset_main"
@@ -904,24 +925,6 @@ service PPLAgent /vendor/bin/ppl_agent
     user root
     group system cache
 
-
-service cmmb /system/bin/cmmbsp
-    class main
-    user root
-    group system audio camera graphics inet net_bt net_bt_admin net_bw_acct media
-    ioprio rt 4
-
-service enableswap /system/bin/sh /enableswap.sh
-    class late_start
-    oneshot
-    seclabel u:r:enableswap:s0
-
-service swapoff_action /system/bin/sh /disableswap.sh
-    class main
-    disabled
-    oneshot
-    seclabel u:r:disableswap:s0
-
 service dbus /system/bin/dbus-daemon --system --nofork
     class main
     socket dbus stream 660 bluetooth bluetooth
@@ -1063,30 +1066,17 @@ service mc64xxd /vendor/bin/mc64xxd
 #
 #sensor service (end)
 #
+
 #
-#emsvr service (start)
+# emsvr service (start)
 #
-on property:ro.build.type=eng
-    start emsvr
-
-on property:ro.build.type=user
-    start emsvr_user
-
-on property:ro.build.type=userdebug
-    start emsvr_user
-
-service emsvr_user /vendor/bin/em_svr
-    disabled
-    user system
-    group system radio diag net_bt_stack
-
 service emsvr /vendor/bin/em_svr
-    disabled
-    user root
-    group net_bt_stack
+    class main
+    user system
+    group system radio diag
 
 #
-#emsvr service (end)
+# emsvr service (end)
 #
 
 service NvRAMAgent /vendor/bin/nvram_agent_binder
@@ -1097,13 +1087,19 @@ service NvRAMAgent /vendor/bin/nvram_agent_binder
 service thermal_manager /vendor/bin/thermal_manager
     class main
     user root
-	group system
+    group system
     oneshot
 
 service thermal /vendor/bin/thermal
     class main
     user system
     group system
+
+service wmtLoader /system/bin/wmt_loader
+    user root
+    group root
+    class core
+    oneshot
 
 service thermald /vendor/bin/thermald
     class main
@@ -1153,72 +1149,7 @@ service charge_only_mode /system/bin/charge_only_mode
 service kpoc_charger /vendor/bin/kpoc_charger
     class charger
 
-###########add for 3Gdongle
 
-on boot
-#
-# change the right of ip-up ip-down scripts(begin)
-#
-chmod 777 /etc/ppp/ip-up
-chmod 777 /etc/ppp/ip-down
-#
-# change the right of ip-up ip-down scripts(end)
-#
-
-#
-# change the right of ip-up-ppp0 ip-down-ppp0 scripts(begin)
-#
-chmod 777 /etc/ppp/ip-up-ppp0
-chmod 777 /etc/ppp/ip-down-ppp0
-#
-# change the right of ip-up ip-down scripts(end)
-#
-
-#set the property of persiste.radio.reset_on_switch
-setprop persist.radio.reset_on_switch false
-#end
-
-#set the property of rild.mark_switchuser
-setprop rild.mark_switchuser 0
-#end
-
-chmod 0644 /vendor/lib/libzteevdo-ril.so
-chomd 0644 /vendor/lib/zterilPara
-chown root /system/bin/pppd
-chmod 4755 /system/bin/pppd
-chown root /vendor/bin/chat
-chmod 4755 /vendor/bin/chat
-
-#
-#ril-daemon (begin)
-#
-service ril-3gddaemon /vendor/bin/rild_dongle
-    class main
-    socket rild-dongle stream 660 root radio
-    socket rild-dongle-debug stream 660 radio radio
-    user root
-    group radio cache inet misc audio log
-    disabled
-
-#
-#ril-daemon (end)
-#
-
-#
-#usbdongled(begin)
-#
-service usbdongled /vendor/bin/dongled
-    class main
-	user root
-	group radio cache inet misc
-	enabled
-
-
-#
-#usbdongled(end)
-#
-
-#
 # add the service for call pppd(begin)
 #
 service zpppd_gprs /vendor/bin/init.gprs-pppd
@@ -1229,6 +1160,11 @@ service zpppd_gprs /vendor/bin/init.gprs-pppd
 #
 # add the service for call pppd(end)
 #
+
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    class main
+    user system
 
 # Program binary service
 service program_binary /vendor/bin/program_binary_service
@@ -1245,8 +1181,8 @@ service vtservice /vendor/bin/vtservice
     socket volte_vt stream 660 root system
     user system
     group system camera graphics inet net_admin net_raw media sdcard_rw radio sdcard_r media_rw
-    ioprio rt 4    
-    
+    ioprio rt 4
+
 service mediacodec /system/bin/mediacodec
     class main
     user mediacodec

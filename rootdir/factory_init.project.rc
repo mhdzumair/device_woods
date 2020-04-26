@@ -17,17 +17,76 @@ service mc6420d /vendor/bin/mc6420d
     class main
 
 on post-fs
+#
+# Connectivity related modules and character device nodes (Begin)
+#
 
+#/dev/ttyMT2 for Connectivity BT/FM/GPS usage
+    chmod 0660 /dev/ttyMT2
+    chown system system /dev/ttyMT2
 
-    
- 		
- 
-    
+    # Create char device file for WMT, GPS, BT, FM, WIFI
+    mknod /dev/stpwmt c 190 0;
+    mknod /dev/stpgps c 191 0;
+    mknod /dev/stpbt  c 192 0;
+    mknod /dev/fm     c 193 0;
+    chmod 0660 /dev/stpwmt
+    chown system system /dev/stpwmt
+    chmod 0660 /dev/wmtdetect
+    chown system system /dev/wmtdetect
 
+    # FM Radio device, FIXME: this is not a proper way to set permissions
+    chmod 0666 /dev/fm
+
+    mknod /dev/wmtWifi c 153 0
+    chmod 0666 /dev/wmtWifi
+    chmod 0660 /dev/stpgps
+    chmod 0660 /dev/stpbt
+    chown bluetooth radio /dev/stpbt
+
+/* FIXME{    #GPS
+    mkdir /data/gps_mnl 0771 gps system
+    mkdir /data/misc/gps 0770 gps system
+    chown gps system /data/mpe_mnl
+    chown gps gps /dev/stpgps
+    chown gps gps /sys/class/gpsdrv/gps/pwrctl
+    chown gps gps /sys/class/gpsdrv/gps/suspend
+    chown gps gps /sys/class/gpsdrv/gps/state
+    chown gps gps /sys/class/gpsdrv/gps/pwrsave
+    chown gps gps /sys/class/gpsdrv/gps/status
+    chmod 0660 /dev/stpgps
+
+# WiFi
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wpa_supplicant 0770 wifi wifi} */
+
+#
+# Connectivity related device nodes & configuration (end)
+#
 
 on boot
 
+#
+# Connectivity related services (Begin)
+#
+# WMT
+service wmt_loader /vendor/bin/wmt_loader
+    user root
+    group root
+    oneshot
 
+service wmt_launcher /vendor/bin/wmt_launcher -p /vendor/firmware/
+    user system
+    group system
 
+# GPS
+service mnld /vendor/bin/mnld
+    class main
+    user gps
+    group gps inet misc sdcard_rw sdcard_r media_rw system radio
+    socket mnld stream 660 gps system
 
-
+#
+# Connectivity related services (End)
+#
