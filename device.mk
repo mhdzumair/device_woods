@@ -21,6 +21,11 @@ PRODUCT_PACKAGES += \
     camera.device@1.0-impl \
     camera.device@3.2-impl
 
+# Graphic HAL
+PRODUCT_PACKAGES += \
+    libgui_ext \
+    libui_ext
+
 # Power
 PRODUCT_PACKAGES += \
     power.mt6737m
