@@ -16,6 +16,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fingerprint.default
 
+# Camera HAL
+PRODUCT_PACKAGES += \
+    camera.device@1.0-impl \
+    camera.device@3.2-impl
+
 # Power
 PRODUCT_PACKAGES += \
     power.mt6737m
