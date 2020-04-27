@@ -1092,7 +1092,7 @@ service thermal_manager /vendor/bin/thermal_manager
 
 service thermal /vendor/bin/thermal
     class main
-    user system
+    user root
     group system
 
 service wmtLoader /system/bin/wmt_loader
@@ -1103,7 +1103,7 @@ service wmtLoader /system/bin/wmt_loader
 
 service thermald /vendor/bin/thermald
     class main
-    user system
+    user root
     group system
 
 service fuelgauged /vendor/bin/fuelgauged
