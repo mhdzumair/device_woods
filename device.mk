@@ -59,10 +59,8 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-		$(LOCAL_PATH)/rootdir/factory_init.connectivity.rc:root/factory_init.project.connectivity.rc \
     $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
 		$(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
-		$(LOCAL_PATH)/rootdir/factory_init.usb.rc:root/factory_init.usb.rc \
     $(LOCAL_PATH)/rootdir/fstab.mt6735:root/fstab.mt6735 \
 		$(LOCAL_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
 		$(LOCAL_PATH)/rootdir/init.microtrust.rc:root/init.microtrust.rc \
