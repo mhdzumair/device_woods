@@ -8,7 +8,6 @@ type aee_dumpsys_data_file, file_type, data_file_type;
 # SF rtt dump
 type sf_rtt_file, file_type, data_file_type;
 
-type proc_ged, fs_type;
 type proc_lk_env, fs_type;
 
 # TEEI data file
@@ -58,5 +57,7 @@ type vtservice_data_file, file_type, data_file_type;
 type debugfs_ged, fs_type, debugfs_type;
 type persist_data_file, file_type, data_file_type;
 #cpu
-type sysfs_devices_system_cpu, fs_type, sysfs_type;
 type smartwake_sysfs, fs_type, sysfs_type;
+type perf_control_sysfs, fs_type, sysfs_type;
+type logmisc_data_file, file_type, data_file_type;
+type mal_data_file, file_type, data_file_type;

@@ -1,0 +1,7 @@
+type terservice_exec , exec_type, file_type;
+type terservice ,domain;
+init_daemon_domain(terservice)
+allow terservice terservice_service:service_manager add;
+# ipc call
+binder_use(terservice)
+binder_service(terservice)

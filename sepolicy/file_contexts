@@ -51,6 +51,7 @@
 /data/misc/setkey/setkey_bak.conf    u:object_r:ims_ipsec_data_file:s0
 /data/misc/setkey/setkey_latest.conf u:object_r:ims_ipsec_data_file:s0
 /persist(/.*)?         u:object_r:persist_data_file:s0
+/data/mal(/.*)? u:object_r:mal_data_file:s0
 
 #sysfs
 /sys/devices/virtual/misc/md32(/.*)?  u:object_r:sysfs_md32:s0
@@ -58,6 +59,7 @@
 /sys/devices/system/cpu(/.*)?	u:object_r:sysfs_devices_system_cpu:s0
 /sys/power/wake_lock	u:object_r:sysfs_wake_lock:s0
 /sys/power/wake_unlock	u:object_r:sysfs_wake_lock:s0
+/sys/devices/.*/queue/scheduler                                 u:object_r:perf_control_sysfs:s0
 
 #socket
 /dev/socket/volte_imsm(/.*)? u:object_r:rild_imsm_socket:s0
@@ -99,11 +101,15 @@
 /dev/block/platform/mtk-msdc\.0/[0-9]+\.msdc0/by-name/persist           u:object_r:persist_block_device:s0
 /dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/oem	u:object_r:oem_block_device:s0
 /dev/block/platform/mtk-msdc\.0/[0-9]+\.msdc0/by-name/userdata		u:object_r:userdata_block_device:s0
+/dev/block/platform/mtk-msdc\.0/[0-9]+\.msdc0/by-name/logo		u:object_r:logo_block_device:s0
+/dev/block/platform/mtk-msdc\.0/[0-9]+\.msdc0/by-name/para		u:object_r:para_block_device:s0
 
 #Executables
 /(system\/vendor|vendor)/bin/boot_logo_updater u:object_r:boot_logo_updater_exec:s0
-/(system\/vendor|vendor)/bin/terservice u:object_r:terservice_exec:s0
 /(system\/vendor|vendor)/bin/init_thh u:object_r:init_thh_service_exec:s0
 /(system\/vendor|vendor)/bin/aal u:object_r:aal_exec:s0
 /(system\/vendor|vendor)/bin/hwservicemanager u:object_r:hwservicemanager_exec:s0
 /(system\/vendor|vendor)/bin/terservice u:object_r:terservice_exec:s0
+
+/data/misc/mblog(/.*)?                                          u:object_r:logmisc_data_file:s0
+/data/log_temp(/.*)?                                            u:object_r:logmisc_data_file:s0

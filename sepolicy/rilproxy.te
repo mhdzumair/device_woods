@@ -1,0 +1,11 @@
+type rilproxy_exec , exec_type, file_type;
+type rilproxy ,domain, mlstrustedsubject;
+init_daemon_domain(rilproxy)
+net_domain(rilproxy)
+
+# Access to wake locks
+wakelock_use(rilproxy)
+
+allow servicemanager rilproxy:dir search;
+allow servicemanager rilproxy:file { read open };
+allow servicemanager rilproxy:process getattr;

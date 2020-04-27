@@ -33,9 +33,6 @@ allow guiext-server graphics_device:chr_file { open read write ioctl };
 allow guiext-server platform_app:binder call;
 allow guiext-server app_data_file:file write;
 
-# for SVP secure memory allocation
-allow guiext-server proc_secmem:file { read write open };
-
 # need to get display information from SF
 allow guiext-server surfaceflinger_service:service_manager find;
 
@@ -47,8 +44,6 @@ allow guiext-server surfaceflinger:fifo_file {read write};
 
 # for debug purpose
 allow guiext-server aee_exp_data_file:file write;
-# for SVP secure memory allocation
-allow guiext-server proc_secmem:file { read write open };
 
 # Date : WK16.33
 # Purpose: Allow to access ged for gralloc_extra functions
