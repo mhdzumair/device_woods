@@ -78,6 +78,7 @@
 /dev/socket/mal-mfi-dongle(/.*)? u:object_r:mal_mfi_socket:s0
 /dev/socket/wod_sim(/.*)? u:object_r:wod_sim_socket:s0
 /dev/socket/wod_action(/.*)? u:object_r:wod_action_socket:s0
+/dev/socket/netdiag(/.*)? u:object_r:netdiag_socket:s0
 
 #device
 /dev/qemu_pipe(/.*)? u:object_r:qemu_pipe_device:s0
@@ -110,6 +111,11 @@
 /(system\/vendor|vendor)/bin/aal u:object_r:aal_exec:s0
 /(system\/vendor|vendor)/bin/hwservicemanager u:object_r:hwservicemanager_exec:s0
 /(system\/vendor|vendor)/bin/terservice u:object_r:terservice_exec:s0
+/(system\/vendor|vendor)/bin/netdiag u:object_r:netdiag_exec:s0
+/(system\/vendor|vendor)/bin/mtk_agpsd u:object_r:mtk_agpsd_exec:s0
+/(system\/vendor|vendor)/bin/sn u:object_r:sn_exec:s0
+/(system\/vendor|vendor)/bin/nvram_daemon u:object_r:nvram_daemon_exec:s0
+/(system\/vendor|vendor)/bin/nvram_agent_binder u:object_r:nvram_agent_binder_exec:s0
 
 /data/misc/mblog(/.*)?                                          u:object_r:logmisc_data_file:s0
 /data/log_temp(/.*)?                                            u:object_r:logmisc_data_file:s0

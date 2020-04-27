@@ -6,3 +6,6 @@ allow nvram_agent_binder nvram_agent_service:service_manager add;
 
 allow nvram_daemon sysfs_boot_mode:file { read open };
 allow nvram_daemon system_data_file:lnk_file { read };
+allow nvram_daemon rootfs:dir { read open };
+allow nvram_daemon toolbox_exec:file { getattr execute read open };
+allow nvram_daemon rootfs:file { getattr read open };

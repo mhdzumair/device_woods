@@ -1,2 +1,5 @@
 #Added by Mohamed Zumair
 allow wmt_loader sysfs_devices_system_cpu:file { read open getattr };
+allow wmt_loader wmt_loader:capability { dac_override };
+allow wmt_loader proc_wmt:file { setattr };
+allow wmt_loader self:capability { chown };
