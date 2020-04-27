@@ -65,15 +65,6 @@ allow mtkrildmd2 system_file:file x_file_perms;
 allow mtkrildmd2 proc:file write;
 allow mtkrildmd2 proc_net:file write;
 
-# Allow mtkrildmd2 to create and use netlink sockets.
-allow mtkrildmd2 self:netlink_socket create_socket_perms;
-allow mtkrildmd2 self:netlink_kobject_uevent_socket create_socket_perms;
-# Set and get routes directly via netlink.
-allow mtkrildmd2 self:netlink_route_socket nlmsg_write;
-
-# Allow mtkrildmd2 to create sockets.
-allow mtkrildmd2 self:socket create_socket_perms;
-
 # Allow read/write to devices/files
 allow mtkrildmd2 alarm_device:chr_file rw_file_perms;
 allow mtkrildmd2 radio_device:chr_file rw_file_perms;

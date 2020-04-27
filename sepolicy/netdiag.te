@@ -60,10 +60,6 @@ allow system_server netdiag:fd use;
 allow netdiag servicemanager:binder call;
 binder_use(netdiag)
 
-# Purpose : for socket with MTKLogger
-allow netdiag self:socket_class_set { create_socket_perms };
-allow netdiag self:netlink_route_socket { create_socket_perms nlmsg_read };
-
 # Purpose : for acess /system/bin/toybox, mmc_prop,proc_net and safemode_prop
 allow netdiag device_logging_prop:file { getattr open };
 allow netdiag mmc_prop:file { getattr open };

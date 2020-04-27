@@ -15,3 +15,6 @@ debug.mtklog  u:object_r:debug_mtklog_prop:s0
 persist.mtklog u:object_r:persist_mtklog_prop:s0
 #debug.netlog.stopreason
 debug.netlog u:object_r:debug_netlog_prop:s0
+
+#=============allow terservice to set terservice property==============
+persist.ter u:object_r:terservice_prop:s0

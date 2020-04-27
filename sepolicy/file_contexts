@@ -1,9 +1,6 @@
 # Sysfs nodes
 /sys/android_touch/gesture           u:object_r:smartwake_sysfs:s0
-
-# camera
-/dev/camera-pipemgr                                             u:object_r:camera_device:s0
-/dev/camera-sysram                                              u:object_r:camera_device:s0
+/sys/devices/soc/soc:touch@/smartwake_active                    u:object_r:smartwake_sysfs:s0
 
 #tee
 /dev/tee1 u:object_r:tee_part_device:s0

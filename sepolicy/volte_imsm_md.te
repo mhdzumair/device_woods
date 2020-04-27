@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/bin/mtkmal Executable File 
+# Policy File of /system/bin/mtkmal Executable File
 
 # ==============================================
 # Type Declaration
@@ -14,7 +14,7 @@ type volte_imsm_md_exec, exec_type, file_type;
 init_daemon_domain(volte_imsm_md)
 
 # Date : WK15.33
-# Operation : Migration 
+# Operation : Migration
 # Purpose : for MTKMAL
 allow volte_imsm_md socket_device:sock_file write;
 
@@ -32,7 +32,6 @@ allow volte_imsm_md volte_imcb:unix_stream_socket connectto;
 allow volte_imsm_md volte_imsa1_socket:sock_file write;
 
 # IMSM connection
-allow volte_imsm_md mtkmal:unix_stream_socket connectto;
 allow volte_imsm_md mal_mfi_socket:sock_file write;
 
 # NETd
@@ -61,16 +60,6 @@ allow volte_imsm_md wod_sim_socket:sock_file write;
 allow volte_imsm_md wod_action_socket:sock_file write;
 allow volte_imsm_md self:udp_socket { create ioctl };
 
-#for RAN access wpa
-unix_socket_send(volte_imsm_md, wpa, wpa)
-allow volte_imsm_md wpa_socket:dir rw_dir_perms;
-allow volte_imsm_md wpa_socket:sock_file create_file_perms;
-allow volte_imsm_md wifi_data_file:dir create_dir_perms;
-allow volte_imsm_md wifi_data_file:file create_file_perms;
-allow volte_imsm_md wpa:unix_dgram_socket sendto;
-allow wpa volte_imsm_md:unix_stream_socket connectto;
-allow wpa volte_imsm_md:unix_dgram_socket sendto;
-allow wpa init:unix_dgram_socket sendto;
 
 #for timer
 allow volte_imsm_md self:capability2 wake_alarm;
