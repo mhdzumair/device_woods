@@ -113,5 +113,4 @@ set_prop(mtkrild, persist_service_atci_prop)
 # ==============================================
 
 # For MAL MFI
-allow mtkrild mtkmal:unix_stream_socket connectto;
 set_prop(mtkrild, persist_mtk_main_attach);

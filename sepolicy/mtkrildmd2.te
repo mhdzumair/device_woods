@@ -85,7 +85,6 @@ allow mtkrildmd2 misc_device:chr_file { rw_file_perms };
 #allow mtkrildmd2 platformblk_device:blk_file { rw_file_perms };
 allow mtkrildmd2 proc_lk_env:file rw_file_perms;
 allow mtkrildmd2 sysfs_vcorefs_pwrctrl:file { w_file_perms };
-allow mtkrildmd2 radio_tmpfs:file { w_file_perms };
 
 # Allow dir search, fd uses
 allow mtkrildmd2 block_device:dir search;
