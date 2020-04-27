@@ -1,1 +1,2 @@
 GuiExtService       u:object_r:guiext-server_service:s0
+mtk.codecservice    u:object_r:mtk_codec_service_service:s0

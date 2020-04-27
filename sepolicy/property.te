@@ -43,3 +43,7 @@ type terservice_prop, property_type, mtk_property_type;
 
 #=============allow mtkmd to set property==============
 type persist_mal_prop, property_type, mtk_property_type;
+
+type ctl_ril-daemon-md2_prop, property_type;
+#=============allow gsm0710muxd to set mux property==============
+type gsm0710muxd_prop, property_type, mtk_property_type;

@@ -21,3 +21,7 @@ persist.ter u:object_r:terservice_prop:s0
 
 #============= allow mal ==============
 persist.mal u:object_r:persist_mal_prop:s0
+
+#=============allow ccci_mdinit to start gsm0710muxd==============
+ctl.ril-daemon-md2   u:object_r:ctl_ril-daemon-md2_prop:s0
+

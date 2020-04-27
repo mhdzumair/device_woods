@@ -61,3 +61,4 @@ type smartwake_sysfs, fs_type, sysfs_type;
 type perf_control_sysfs, fs_type, sysfs_type;
 type logmisc_data_file, file_type, data_file_type;
 type mal_data_file, file_type, data_file_type;
+type netdiag_socket, file_type;

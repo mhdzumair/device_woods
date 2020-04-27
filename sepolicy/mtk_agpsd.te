@@ -1,0 +1,12 @@
+# ==============================================
+# Type Declaration
+# ==============================================
+type mtk_agpsd_exec, exec_type, file_type;
+type mtk_agpsd, domain;
+
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+init_daemon_domain(mtk_agpsd)
+
+net_domain(mtk_agpsd)
