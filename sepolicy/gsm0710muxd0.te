@@ -1,0 +1,1 @@
+allow gsm0710muxd self:capability { setuid };

@@ -41,3 +41,5 @@ allow init hal_usb_default:process { getattr };
 allow init functionfs:dir { mounton };
 allow init pmsg_device:chr_file { open };
 allow init servicemanager:binder { call transfer };
+allow init servicemanager:binder { transfer };
+allow init gps_device:chr_file { read open };
