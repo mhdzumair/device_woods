@@ -78,34 +78,8 @@
     </integer-array>
     <!-- automatic (adaptive) brightness values end -->
 
-    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveNotificationLed">true</bool>
-
-    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveBatteryLed">true</bool>
-
-    <!-- Does the notification LED support multiple colors? Used to decide if the user can change the colors -->
-    <!--bool name="config_multiColorNotificationLed">true</bool-->
-
-    <!-- Does the battery LED support multiple colors? Used to decide if the user can change the colors -->
-    <!--bool name="config_multiColorBatteryLed">true</bool-->
-
-    <!-- Default color for notification LED is green. -->
-    <color name="config_defaultNotificationColor">#0xffff0000</color>
-
-    <!-- Default value for led color when battery is low on charge -->
-    <integer name="config_notificationsBatteryLowARGB">0xffff0000</integer>
-
-    <!-- Default value for led color when battery is medium charged -->
-    <integer name="config_notificationsBatteryMediumARGB">0xffff0000</integer>
-
-    <!-- Default value for led color when battery is fully charged -->
-    <integer name="config_notificationsBatteryFullARGB">0xffff0000</integer>
-
          <!-- Indicate whether closing the lid causes the device to go to sleep and opening
-
           it causes the device to wake up.
-
           The default is false. -->
     <bool name="config_lidControlsSleep">true</bool>
 
@@ -115,28 +89,4 @@
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 
-    <!-- Hardware keys present on the device, stored as a bit field.
-         This integer should equal the sum of the corresponding value for each
-         of the following keys present:
-            1 - Home
-            2 - Back
-            4 - Menu
-            8 - Assistant (search)
-            16 - App switch
-            32 - Camera
-            64 - Volume rocker
-         For example, a device with Home, Back and Menu keys would set this
-         config to 7. -->
-    <integer name="config_deviceHardwareKeys">83</integer>
-
-    <!-- Is the device capable of fingerprint actions
-	Fingerprint options of the device, stored as a bit field.
-        This integer should equal the sum of the corresponding value for each
-        of the following options present:
-            1 - Single tap
-            2 - Double tap
-            4 - Long tap
-         For example, a device with Single and Long tap would set this
-         config to 5. -->
-    <integer name="config_fingerprintActions">6</integer>
 </resources>
