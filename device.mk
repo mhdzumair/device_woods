@@ -38,20 +38,6 @@ PRODUCT_COPY_FILES += \
 # MTK stuff
 BOARD_USES_MTK_HARDWARE := true
 
-# Disable adb security
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	ro.mount.fs=EXT4 \
-	ro.adb.secure=0 \
-	ro.secure=0 \
-	ro.allow.mock.location=0 \
-	ro.debuggable=1 \
-	persist.service.acm.enable=0 \
-	ro.config.low_ram=false
-
-ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += persist.service.adb.enable=1
-
 # Audio
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/audio/audio_device.xml:system/vendor/etc/audio_device.xml \
@@ -69,7 +55,7 @@ PRODUCT_COPY_FILES += \
 # Keyboard layout
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl \
-  $(LOCAL_PATH)/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl 
+  $(LOCAL_PATH)/configs/ACCDET.kl:system/usr/keylayout/ACCDET.kl
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
