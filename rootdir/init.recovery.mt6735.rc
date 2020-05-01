@@ -1,0 +1,63 @@
+on fs
+
+    # debug boot process
+    rm /cache/boot_lc_full.txt
+    rm /cache/boot_lc_crash.txt
+    rm /cache/boot_lc_kernel.txt
+    start boot_lc
+    start boot_lc_kernel
+    start boot_lc_crash
+
+on init
+#symlink vendor partitions
+    symlink /system/vendor /vendor
+
+#	fake to CDP case
+#	write /sys/module/musb_hdrc/parameters/musb_skip_charge_detect 1
+
+# 	set battery thread free
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0E8D
+    write /sys/class/android_usb/android0/idProduct 2008
+    write /sys/class/android_usb/android0/functions mtp
+    write /sys/class/android_usb/android0/enable 1
+
+#	make this twice to keep following action not race with batyery thread
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 0E8D
+    write /sys/class/android_usb/android0/idProduct 2008
+    write /sys/class/android_usb/android0/functions mtp
+    write /sys/class/android_usb/android0/enable 1
+
+# 	distinguish USB shoulde connect or not by this, CDP vs SDP
+	write /sys/devices/platform/mt_usb/cmode 2
+
+on property:ro.debuggable=1
+# 	restore cmode to normal for making USB enumeration
+	write /sys/devices/platform/mt_usb/cmode 1
+
+service boot_lc /system/bin/logcat -b all -D -f /cache/boot_lc_full.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_lc_crash /system/bin/logcat -b crash -D -f /cache/boot_lc_crash.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+service boot_lc_kernel /system/bin/logcat -b kernel -D -f /cache/boot_lc_kernel.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+on property:sys.boot_completed=1
+    stop boot_lc
+    stop boot_lc_crash
+    stop boot_lc_kernel

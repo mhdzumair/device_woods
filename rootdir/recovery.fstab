@@ -1,21 +1,28 @@
 # Android fstab file.
-#<src>           <mnt_point>         <type>    <mnt_flags and options>                 <fs_mgr_flags>
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/boot			/boot		      emmc	  defaults								                             defaults
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/cache     /cache        f2fs    nosuid,nodev,noatime,inline_xattr                    wait,check,formattable
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/cache     /cache        ext4    noatime,nosuid,nodev,barrier=1,data=ordered,nomblk_io_submit,noauto_da_alloc,errors=panic         wait,check
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/lk			  /uboot		    emmc	  defaults								                             defaults
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/logo			/logo		      emmc	  defaults								                             defaults
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/metadata	/metadata		  emmc	  defaults								                             defaults
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvdata    /nvdata       ext4    noatime,nosuid,nodev,noauto_da_alloc,discard         wait,check,autoformat
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvram		  /nvram	   	  emmc	  defaults								                             defaults
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/recovery	/recovery	    emmc	  defaults								                             defaults
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/system    /system       ext4    ro,barrier=1						                             wait
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/userdata  /data         f2fs    nosuid,nodev,noatime,inline_xattr                    wait,check,resize,encryptable=/dev/block/platform/mtk-msdc.0/by-name/metadata
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/userdata  /data         ext4    noatime,nosuid,nodev,barrier=1,data=ordered,nomblk_io_submit,noauto_da_alloc,errors=panic         wait,check,resize,encryptable=/dev/block/platform/mtk-msdc.0/by-name/metadata
+# [mount point]	fstype                                    device    	                             [device2]                                                         flags
 
-/devices/mtk-msdc.0/11240000.MSDC1/mmc_host/mmc1                auto          vfat    defaults                                             voldmanaged=sdcard1:auto,noemulatedsd
-/devices/platform/mt_usb                                        auto          vfat    defaults                                             voldmanaged=usbotg:auto
-/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/frp       /persistent   emmc    defaults                                             defaults
+/boot			        emmc	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/boot	                                                                         flags=display="Boot";backup=1;flashimg=1
+/cache			      ext4	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/cache	                                                                       flags=display="Cache";backup=1;wipeingui;wipeduringfactoryreset
+/lk			          emmc	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/lk	                                                                           flags=display="Uboot";backup=1;flashimg=1
+/logo			        emmc	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/logo	                                                                         flags=display="Logo";backup=1;flashimg=1
+/metadata		      emmc	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/metadata
+/nvram			      emmc	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvram	                                                                       flags=display="IMEI/NVRAM";backup=1;flashimg=1
+/secro			      emmc	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/secro	                                                                       flags=display="Secro";backup=1;flashimg=1
+/recovery		      emmc	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/recovery	                                                                     flags=display="Recovery";backup=1
+/system			      ext4	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/system	                                                                       flags=display="System";backup=1;wipeingui
+/system_image     emmc         /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/system                                                                        flags=display="System_image";backup=1;flashimg=1
+/data			        ext4	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/userdata	                                                                     flags=forceencrypt=/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/metadata
+/sdcard1	        auto	       /dev/block/platform/mtk-msdc.0/11240000.msdc1/mmcblk1p1	           	/dev/block/platform/mtk-msdc.0/11240000.msdc1/mmcblk1          flags=display="MicroSD";storage;wipeingui;removable;backup=0;encryptable=userdata
+/storage          ext4         /data/media/0                                                                                                                       flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable
+/usbotg			      auto         /dev/block/sda1			                                                /dev/block/sda			                                           flags=display="Pendrive/USB OTG";storage;wipeingui;removable
+/persistent		    emmc	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/frp
+/proinfo		      emmc	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/proinfo		                                                                   flags=display="Proinfo";backup=1;flashimg=1
+/protect_f		    ext4	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/protect1		                                                                   flags=display="Protect1";backup=1
+/protect_s		    ext4	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/protect2		                                                                   flags=display="Protect2";backup=1
+/para			        emmc	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/para		                                                                       flags=display="Parametr";backup=1
+/frp			        emmc	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/frp		                                                                       flags=display="Frp";backup=1
+/oemkeystore	    emmc	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/oemkeystore
+/nvdata			      ext4	       /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvdata		                                                                     flags=display="NvData";backup=1;flashimg=1
