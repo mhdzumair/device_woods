@@ -49,10 +49,6 @@ MTK_APPENDED_DTB_SUPPORT := yes
 TARGET_KERNEL_SOURCE := kernel/motorola/woods
 TARGET_KERNEL_CONFIG := woods_defconfig
 
-#toolchain
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/gcc-linaro-7.5/bin
-
 # Partitions
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 20971520
 BOARD_FLASH_BLOCK_SIZE := 131072
