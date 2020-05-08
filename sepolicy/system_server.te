@@ -1,2 +1,3 @@
 #Added for policy for system_server Mohamed Zumair
 allow system_server debugfs:dir { read open };
+allow system_server wifi_data_file:sock_file { unlink };

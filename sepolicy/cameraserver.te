@@ -6,3 +6,4 @@ allow cameraserver debugfs_trace_marker:file { write open };
 allow cameraserver CAM_CAL_DRV1_device:chr_file rw_file_perms;
 allow cameraserver CAM_CAL_DRV2_device:chr_file rw_file_perms;
 allow cameraserver CAM_CAL_DRV3_device:chr_file rw_file_perms;
+allow cameraserver nvdata_file:lnk_file { read };
