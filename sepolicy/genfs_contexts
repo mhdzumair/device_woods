@@ -1,0 +1,1 @@
+genfscon proc /lk_env u:object_r:proc_lk_env:s0

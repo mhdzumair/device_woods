@@ -127,6 +127,3 @@
 /(system\/vendor|vendor)/bin/aal u:object_r:aal_exec:s0
 /(system\/vendor|vendor)/bin/slpd u:object_r:slpd_exec:s0
 /(system\/vendor|vendor)/bin/MtkCodecService u:object_r:MtkCodecService_exec:s0
-
-#proc files
-/proc/lk_env u:proc_lk_env:s0
