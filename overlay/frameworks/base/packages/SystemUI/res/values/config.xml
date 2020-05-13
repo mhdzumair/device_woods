@@ -35,7 +35,6 @@
     <!-- Doze: can we assume the pickup sensor includes a proximity check?
          This is ignored if doze_pickup_subtype_performs_proximity_check is not empty.
          @deprecated: use doze_pickup_subtype_performs_proximity_check instead.-->
-    <bool name="doze_pickup_performs_proximity_check">false</bool>
+    <bool name="doze_pickup_performs_proximity_check">true</bool>
 
 </resources>
-
