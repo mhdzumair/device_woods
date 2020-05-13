@@ -11,3 +11,4 @@ allow pq graphics_device:dir search;
 # Purpose : Allow permission check
 allow pq pq_service:service_manager { find };
 allow pq permission_service:service_manager { find };
+allow pq debug_prop:property_service { set };

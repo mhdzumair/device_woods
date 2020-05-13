@@ -1,0 +1,1 @@
+allow ril-daemon-mtk proc_lk_env:file { open ioctl read };
