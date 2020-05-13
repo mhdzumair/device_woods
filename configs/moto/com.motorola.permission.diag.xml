@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<permissions>
+    <permission name="com.motorola.permission.QCOM_DIAG">
+        <group gid="qcom_diag" />
+    </permission>
+</permissions>
