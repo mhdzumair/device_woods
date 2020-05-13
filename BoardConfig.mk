@@ -53,10 +53,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Include needed symbols
-TARGET_INCLUDE_XLOG_SYMBOLS := true
-TARGET_INCLUDE_AUDIO_SYMBOLS := true
-TARGET_INCLUDE_GPS_SYMBOLS := true
-TARGET_INCLUDE_UI_SYMBOLS := true
+TARGET_INCLUDE_LIBMTK_SYMBOLS := true
 include vendor/mad/config/symbols.mk
 
 #audio
