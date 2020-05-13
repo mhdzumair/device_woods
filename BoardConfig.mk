@@ -58,13 +58,38 @@ include vendor/mad/config/symbols.mk
 
 #audio
 TARGET_HAS_PRE_N_AUDIO := true
+TARGET_CPU_MEMCPY_OPT_DISABLE := true
+BOARD_USES_MTK_AUDIO := true
 
-# Use custom init.rc
-#TARGET_PROVIDES_INIT_RC := true
+# Flags
+BOARD_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
+BOARD_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 
 # Display
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
+MTK_HWC_SUPPORT := yes
+MTK_HWC_VERSION := 1.4.1
+MTK_GPU_VERSION := mali midgard r12p1
+OVERRIDE_RS_DRIVER := libRSDriver_mtk.so
+PRESENT_TIME_OFFSET_FROM_VSYNC_NS := 0
+
+# Fix video autoscaling on old OMX decoders
+TARGET_OMX_LEGACY_RESCALING := true
+
+# GPS
+BOARD_GPS_LIBRARIES :=true
+BOARD_CONNECTIVITY_MODULE := MT6630
+BOARD_MEDIATEK_USES_GPS := true
+
+# Enable Minikin text layout engine (will be the default soon)
+USE_MINIKIN := true
+
+# Charger
+BOARD_CHARGER_SHOW_PERCENTAGE := true
+
+# Fonts
+EXTENDED_FONT_FOOTPRINT := true
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth

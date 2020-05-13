@@ -1,6 +1,8 @@
 ## Specify phone tech before including full_phone
 
 # Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit some common CM stuff.
