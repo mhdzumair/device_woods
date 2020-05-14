@@ -1,7 +1,6 @@
 # MTK project .rc configure
 
 import init.mt6735.usb.rc
-import init.mt6735.power.rc
 
 on init
     mkdir /oem 0550 root root
@@ -38,12 +37,12 @@ on post-fs-data
     chown system system /sys/class/leds/sub_flashlight/brightness
 #add end
 
-#add by yangchao 
+#add by yangchao
     #chmod 0664 /sys/class/leds/lcd-backlight/brightness
     #chown system system /sys/class/leds/lcd-backlight/brightness
 #add end
 
-#add by yangchao 
+#add by yangchao
     chmod 0664 /sys/bus/platform/drivers/cap_touch/reg
     chown system system /sys/bus/platform/drivers/cap_touch/reg
 #add end
@@ -55,11 +54,11 @@ on post-fs-data
 
 #add by yangchao for TPrawdata start
     chmod 0664 proc/android_touch/register
-    chown system system /proc/android_touch/register 
+    chown system system /proc/android_touch/register
     chmod 0664 /proc/android_touch/self_test
-    chown system system /proc/android_touch/self_test 
+    chown system system /proc/android_touch/self_test
     chmod 0664 /proc/android_touch/diag
-    chown system system /proc/android_touch/diag 
+    chown system system /proc/android_touch/diag
     chmod 0664 /proc/android_touch/reset
     chown system system /proc/android_touch/reset
 #add by yangchao for TPrawdata end
@@ -113,14 +112,14 @@ on post-fs-data
 
     chmod 0660 /dev/GAF001AF
     chown system camera /dev/GAF001AF
-   
+
     chmod 0660 /dev/DW9714AF
     chown system camera /dev/DW9714AF
 
-   
+
     chmod 0660 /dev/AD5820AF
     chown system camera /dev/AD5820AF
-    
+
 	chmod 0660 /dev/BU64745GWZAF
     chown system camera /dev/BU64745GWZAF
 #wangkangmin@wind-mobi.com 20161206 add for camera af and BB otp begin
@@ -144,11 +143,11 @@ on post-fs-data
     chmod 0660 /proc/smb/ScreenComm
 
 #Define device for ATCID
-    chmod 660 /dev/ttyGS0 
-    chown system /dev/ttyGS0 
-    chmod 660 /dev/ttyGS1 
+    chmod 660 /dev/ttyGS0
+    chown system /dev/ttyGS0
+    chmod 660 /dev/ttyGS1
     chown system /dev/ttyGS1
-   
+
 
 # lenovo-sw, chenzz3, configure permission for perftags device, begin
     chown system system /dev/perftags
@@ -207,12 +206,12 @@ service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/
 
 
 service atci_service /vendor/bin/atci_service
-	socket atci-service stream 660 radio system 
-	socket atci-serv-fw stream 660 radio system 
-	user root 
+	socket atci-service stream 660 radio system
+	socket atci-serv-fw stream 660 radio system
+	user root
         disabled
-	group radio system  
-	
+	group radio system
+
 service atcid-daemon-u /vendor/bin/atcid
 	user system
 	group radio system media
@@ -247,11 +246,10 @@ service audio-daemon /vendor/bin/audiocmdservice_atci
     group nvram media system sdcard_rw
     disabled
     oneshot
-    
+
 #add for runin
 on property:persist.sys.runin=enable
     write /sys/class/power_supply/battery/device/BatteryTestStatus 1
 
 on property:persist.sys.runin=disable
     write /sys/class/power_supply/battery/device/BatteryTestStatus 0
-
