@@ -127,3 +127,9 @@
 /(system\/vendor|vendor)/bin/aal u:object_r:aal_exec:s0
 /(system\/vendor|vendor)/bin/slpd u:object_r:slpd_exec:s0
 /(system\/vendor|vendor)/bin/MtkCodecService u:object_r:MtkCodecService_exec:s0
+/(system\/vendor|vendor)/bin/wfca u:object_r:wfca_exec:s0
+/(system\/vendor|vendor)/bin/ipsec u:object_r:ipsec_exec:s0
+/(system\/vendor|vendor)/bin/charon u:object_r:charon_exec:s0
+/(system\/vendor|vendor)/bin/kpoc_charger u:object_r:kpoc_charger_exec:s0
+/(system\/vendor|vendor)/bin/epdg_wod u:object_r:epdg_wod_exec:s0
+/(system\/vendor|vendor)/bin/rilproxy u:object_r:rilproxy_exec:s0
