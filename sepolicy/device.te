@@ -42,3 +42,5 @@ type rfkill_device, dev_type;
 type CAM_CAL_DRV1_device, dev_type;
 type CAM_CAL_DRV2_device, dev_type;
 type CAM_CAL_DRV3_device, dev_type;
+type camera_isp_device, dev_type;
+

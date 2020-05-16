@@ -4,6 +4,5 @@ allow mediacodec proc:file { getattr };
 allow mediacodec sysfs_ddr_type:file { read open };
 allow mediacodec guiext-server_service:service_manager { find };
 allow mediacodec sysfs_boot_mode:file { read open };
-allow mediacodec default_prop:property_service { set };
 allow mediacodec pq_conf_prop:property_service { set };
 allow mediacodec debug_prop:property_service { set };

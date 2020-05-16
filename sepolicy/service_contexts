@@ -6,4 +6,6 @@ terservice                  u:object_r:terservice_service:s0
 media.VTS                   u:object_r:vtservice_service:s0
 GpuAppSpectatorService  u:object_r:ged_srv_service:s0
 mtk-perfservice         u:object_r:mtk_perf_service:s0
+program_binary              u:object_r:program_binary_service:s0
+epdg_service        u:object_r:mtk_epdg_service:s0
 

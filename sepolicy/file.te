@@ -66,3 +66,8 @@ type autokd_data_file, file_type, data_file_type;
 
 # NE core_forwarder
 type aee_core_data_file, file_type, data_file_type;
+
+# eMBMS VzW SDK file
+type embms_library_file, file_type, data_file_type;
+
+type rild_via_socket, file_type;

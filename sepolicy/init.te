@@ -28,3 +28,4 @@ allow init usb_ffs_device:dir { mounton };
 allow init shell_data_file:file { create write };
 allow init shell_data_file:dir { open };
 allow init nvdata_file:lnk_file { read };
+allow init gpu_device:chr_file { write getattr ioctl };

@@ -4,7 +4,7 @@
 # camera
 /dev/camera-pipemgr                                             u:object_r:camera_device:s0
 /dev/camera-sysram                                              u:object_r:camera_device:s0
-
+/dev/camera-isp(/.*)? u:object_r:camera_isp_device:s0
 #tee
 /dev/tee1 u:object_r:tee_part_device:s0
 /dev/tee2 u:object_r:tee_part_device:s0
@@ -33,6 +33,7 @@
 #socket
 /dev/socket/volte_imsa1(/.*)?	u:object_r:volte_imsa1_socket:s0
 /dev/socket/volte_stack(/.*)?	u:object_r:volte_stack_socket:s0
+/dev/socket/rild-via u:object_r:rild_via_socket:s0
 
 /dev/emd.* u:object_r:emd_device:s0
 /data/misc/stp_dump(/.*)? u:object_r:stp_dump_data_file:s0
@@ -58,6 +59,7 @@
 /data/misc/PDC.ini u:object_r:akmd8963_access_file2:s0
 /data/misc/egistec(/.*)? u:object_r:fingerprintd_data_file:s0
 /data/misc/egistec/calibration_data_orig.bin u:object_r:fingerprintd_data_file:s0
+/data/embms(/.*)? u:object_r:embms_library_file:s0
 
 #sysfs
 /sys/devices/virtual/misc/md32(/.*)?  u:object_r:sysfs_md32:s0
@@ -133,3 +135,6 @@
 /(system\/vendor|vendor)/bin/kpoc_charger u:object_r:kpoc_charger_exec:s0
 /(system\/vendor|vendor)/bin/epdg_wod u:object_r:epdg_wod_exec:s0
 /(system\/vendor|vendor)/bin/rilproxy u:object_r:rilproxy_exec:s0
+/(system\/vendor|vendor)/bin/batterywarning u:object_r:batterywarning_exec:s0
+/(system\/vendor|vendor)/bin/program_binary_service u:object_r:program_binary_exec:s0
+/(system\/vendor|vendor)/bin/program_binary_builder u:object_r:program_binary_exec:s0

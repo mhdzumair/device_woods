@@ -47,3 +47,18 @@ type debug_mtk_aee_prop, property_type, mtk_property_type;
 
 #=============allow aee_dumpstate==============
 type debug_bq_dump_prop, property_type, mtk_property_type;
+
+#=============allow program binary deamon  ==============
+type program_binary_prop, property_type, mtk_property_type;
+
+#=============allow radio to set mtk_wfc_enable property==============
+type mtk_wfc_prop, property_type, mtk_property_type;
+
+#=============allow radio to set mtk_vt_enable property==============
+type mtk_vt_prop, property_type, mtk_property_type;
+
+#============= allow ro.wlan.mtk.wifi.5g property ===============
+type wifi_5g_prop, property_type, mtk_property_type;
+
+#=============allow statusd==============
+type cdma_prop, property_type, mtk_property_type;

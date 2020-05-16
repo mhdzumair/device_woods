@@ -28,8 +28,6 @@ allow audiocmdservice_atci audioserver_service:service_manager find;
 
 # Read/Write NV
 allow audiocmdservice_atci nvram_device:devfile_class_set rw_file_perms;
-allow audiocmdservice_atci nvram_data_file:dir create_dir_perms;
-allow audiocmdservice_atci nvram_data_file:file create_file_perms;
 allow audiocmdservice_atci nvdata_file:dir create_dir_perms;
 allow audiocmdservice_atci nvdata_file:file create_file_perms;
 
