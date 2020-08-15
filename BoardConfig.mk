@@ -77,9 +77,6 @@ PRESENT_TIME_OFFSET_FROM_VSYNC_NS := 0
 # Fix video autoscaling on old OMX decoders
 TARGET_OMX_LEGACY_RESCALING := true
 
-#fix for old video handler not close automatically so cameraserver will crash after video recording
-TARGET_CAMERASERVICE_CLOSES_NATIVE_HANDLES := true
-
 # GPS
 BOARD_GPS_LIBRARIES :=true
 BOARD_CONNECTIVITY_MODULE := MT6630
