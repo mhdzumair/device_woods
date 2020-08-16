@@ -745,12 +745,12 @@ on property:vold.decrypt=trigger_shutdown_framework
     setprop dev.bootcomplete 0
     setprop service.nvram_init 0
 
-service stop_modem /vendor/bin/md_ctrl 0
+service stop_modem /system/bin/md_ctrl 0
     class main
     disabled
     oneshot
 
-service start_modem /vendor/bin/md_ctrl 1
+service start_modem /system/bin/md_ctrl 1
     class main
     disabled
     oneshot
