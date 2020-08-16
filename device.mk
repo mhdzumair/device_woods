@@ -65,7 +65,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/moto/com.motorola.permission.diag.xml:system/etc/com.motorola.permission.diag.xml \
     $(LOCAL_PATH)/configs/moto/com.motorola.software.fmplayermtk.xml:system/etc/com.motorola.software.fmplayermtk.xml \
     $(LOCAL_PATH)/configs/moto/com.motorola.software.storageoptimizer.xml:system/etc/com.motorola.software.storageoptimizer.xml \
-    $(LOCAL_PATH)/configs/moto/com.motorola.software.x_line.xml:system/etc/com.motorola.software.storageoptimizer.xml \
+    $(LOCAL_PATH)/configs/moto/com.motorola.software.x_line.xml:system/etc/com.motorola.software.x_line.xml \
     $(LOCAL_PATH)/configs/moto/com.motorola.timeweatherwidget.library.xml:system/etc/com.motorola.timeweatherwidget.library.xml
 
 # Keyboard layout
