@@ -39,4 +39,4 @@ allow batterywarning system_server:binder call;
 allow batterywarning activity_service:service_manager find;
 
 # Added policy for batterywarning by Mohamed Zumair
-allow batterywarning batterynotify_sysfs:file { read, open, getattr };
+allow batterywarning batterynotify_sysfs:file { read open getattr };
