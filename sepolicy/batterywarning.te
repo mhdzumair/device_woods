@@ -1,5 +1,5 @@
 # ==============================================
-# Policy File of /system/binbatterywarning Executable File 
+# Policy File of /system/binbatterywarning Executable File
 
 
 # ==============================================
@@ -37,3 +37,6 @@ allow batterywarning system_server:binder call;
 # Operation : Migration
 # Purpose : allow battery warning check AMS service status
 allow batterywarning activity_service:service_manager find;
+
+# Added policy for batterywarning by Mohamed Zumair
+allow batterywarning batterynotify_sysfs:file { read, open, getattr };

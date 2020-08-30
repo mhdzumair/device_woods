@@ -14,3 +14,6 @@ allow mediaserver CAM_CAL_DRV3_device:chr_file rw_file_perms;
 # video codec
 allow mediaserver Vcodec_device:chr_file rw_file_perms;
 allow mediaserver sysfs_devinfo:file { open read write };
+
+# boot
+allow mediaserver sysfs_boot_mode:file { read open };

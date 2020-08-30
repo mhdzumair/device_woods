@@ -1,5 +1,6 @@
 # Sysfs nodes
 /sys/android_touch/gesture           u:object_r:smartwake_sysfs:s0
+/sys/devices/platform/mt-battery/BatteryNotify     u:object_r:batterynotify_sysfs:s0
 
 # camera
 /dev/camera-pipemgr                                             u:object_r:camera_device:s0
@@ -138,3 +139,5 @@
 /(system\/vendor|vendor)/bin/batterywarning u:object_r:batterywarning_exec:s0
 /(system\/vendor|vendor)/bin/program_binary_service u:object_r:program_binary_exec:s0
 /(system\/vendor|vendor)/bin/program_binary_builder u:object_r:program_binary_exec:s0
+/(system\/vendor|vendor)/bin/vtservice u:object_r:vtservice_exec:s0
+/(system\/vendor|vendor)/bin/stp_dump3 u:object_r:stp_dump3_exec:s0
